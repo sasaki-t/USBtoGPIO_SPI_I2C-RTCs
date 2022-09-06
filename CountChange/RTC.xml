@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rtc:RtcProfile rtc:version="0.3" rtc:id="RTC:TakeshiSasaki:generic:CountChange:1.0.0" xmlns:rtc="http://www.openrtp.org/namespaces/rtc" xmlns:rtcExt="http://www.openrtp.org/namespaces/rtc_ext" xmlns:rtcDoc="http://www.openrtp.org/namespaces/rtc_doc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <rtc:BasicInfo xsi:type="rtcExt:basic_info_ext" rtcExt:saveProject="CountChange" rtc:updateDate="2022-02-21T23:11:08.000+09:00" rtc:creationDate="2022-02-21T22:52:18.000+09:00" rtc:abstract="入力値が1つ前の入力値と比べ指定の変化をするたびに出力値が増加する。出力の変化範囲、変化幅はコンフィギュレーションで変更可能。どのような変化をカウントするか（増加する、減少する、変化する、変化しない）もコンフィギュレーションで指定できる。 例）min=0, max=4, step=2, change=increaseのとき、 入力値の変化が1→4→7→3→5→2→2→5なら入力値が増加した1→4で0、4→7で2、3→5で4、0→5で0が出力される。" rtc:version="1.0.0" rtc:vendor="TakeshiSasaki" rtc:maxInstances="1" rtc:executionType="PeriodicExecutionContext" rtc:executionRate="1000.0" rtc:description="Count input data change" rtc:category="generic" rtc:componentKind="DataFlowComponent" rtc:activityType="PERIODIC" rtc:componentType="STATIC" rtc:name="CountChange">
+        <rtcDoc:Doc rtcDoc:reference="" rtcDoc:license="" rtcDoc:creator="佐々木毅 (Takeshi SASAKI) &lt;sasaki-t(_at_)ieee.org&gt;" rtcDoc:algorithm="" rtcDoc:inout="InPort&lt;br/&gt;ポート名/型/説明&lt;br/&gt;data/TimedLong/変化を検知する対象。&lt;br/&gt;OutPort&lt;br/&gt;ポート名/型/説明&lt;br/&gt;count/TimedLong/ 入力値が変化するたびに出力される値。出力される値の範囲や変化のタイミングについてはコンフィギュレーションで指定できる。" rtcDoc:description="入力値が1つ前の入力値と比べ指定の変化をするたびに出力値が増加する。出力の変化範囲、変化幅はコンフィギュレーションで変更可能。どのような変化をカウントするか（増加する、減少する、変化する、変化しない）もコンフィギュレーションで指定できる。&lt;br/&gt;例）min=0, max=4, step=2, change=increaseのとき、&lt;br/&gt;入力値の変化が1→4→7→3→5→2→2→5なら入力値が増加した1→4で0、4→7で2、3→5で4、0→5で0が出力される。"/>
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+    </rtc:BasicInfo>
+    <rtc:Actions>
+        <rtc:OnInitialize xsi:type="rtcDoc:action_status_doc" rtc:implemented="true"/>
+        <rtc:OnFinalize xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnStartup xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnShutdown xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnActivated xsi:type="rtcDoc:action_status_doc" rtc:implemented="true">
+            <rtcDoc:Doc rtcDoc:postCondition="" rtcDoc:preCondition="" rtcDoc:description="初期化を行う。"/>
+        </rtc:OnActivated>
+        <rtc:OnDeactivated xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnAborting xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnError xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnReset xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnExecute xsi:type="rtcDoc:action_status_doc" rtc:implemented="true">
+            <rtcDoc:Doc rtcDoc:postCondition="" rtcDoc:preCondition="" rtcDoc:description="入力ポートから値を読み込み、直前の入力値と比較する。入力値にコンフィギュレーションで指定の変化があれば出力を行う。"/>
+        </rtc:OnExecute>
+        <rtc:OnStateUpdate xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnRateChanged xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+    </rtc:Actions>
+    <rtc:ConfigurationSet>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="0" rtc:type="int" rtc:name="min">
+            <rtcDoc:Doc rtcDoc:constraint="" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="出力される値の最小値。min&lt;=maxでなければならない。出力値が[min, max]の範囲を超えた場合、stepが正ならこの値が出力される。stepが非負のとき、最初に入力が指定の条件を満たしたときに出力される値もこの値になる。" rtcDoc:defaultValue="0" rtcDoc:dataname="min"/>
+            <rtcExt:Properties rtcExt:value="text" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="9" rtc:type="int" rtc:name="max">
+            <rtcDoc:Doc rtcDoc:constraint="" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="出力される値の最大値。min&lt;=maxでなければならない。出力値が[min, max]の範囲を超えた場合、stepが負ならこの値が出力される。stepが負のとき、最初に入力が指定の条件を満たしたときに出力される値もこの値になる。" rtcDoc:defaultValue="9" rtcDoc:dataname="max"/>
+            <rtcExt:Properties rtcExt:value="text" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="1" rtc:type="int" rtc:name="step">
+            <rtcDoc:Doc rtcDoc:constraint="" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="指定された入力の変化を検知するたびに出力値が変化する幅。例えば、現在の出力値が0でstepが2なら次に出力される値は2、その次に出力される値は4となる。" rtcDoc:defaultValue="1" rtcDoc:dataname="step"/>
+            <rtcExt:Properties rtcExt:value="text" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="increase" rtc:type="string" rtc:name="change">
+            <rtc:Constraint>
+                <rtc:ConstraintUnitType>
+                    <rtc:Or>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>increase</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>decrease</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>change</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>nochange</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                    </rtc:Or>
+                </rtc:ConstraintUnitType>
+            </rtc:Constraint>
+            <rtcDoc:Doc rtcDoc:constraint="" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="出力ポートから値が出力されるタイミング。increaseの場合は入力値が1つ前の入力値と比べ増加した場合に、decreaseの場合は減少した場合に、changeの場合は増加もしくは減少した場合に、nochangeの場合は変化しなかった場合に出力ポートから値が出力される。" rtcDoc:defaultValue="increase" rtcDoc:dataname="change"/>
+            <rtcExt:Properties rtcExt:value="radio" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+    </rtc:ConfigurationSet>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="LEFT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="data" rtc:portType="DataInPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="変化を検知する対象。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="count" rtc:portType="DataOutPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="入力値が変化するたびに出力される値。出力される値の範囲や変化のタイミングについてはコンフィギュレーションで指定できる。"/>
+    </rtc:DataPorts>
+    <rtc:Language xsi:type="rtcExt:language_ext" rtc:kind="Python"/>
+</rtc:RtcProfile>

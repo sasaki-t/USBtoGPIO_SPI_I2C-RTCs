@@ -1,0 +1,54 @@
+# BME280Decode CMake config file
+#
+# This file sets the following variables:
+# BME280Decode_FOUND - Always TRUE.
+# BME280Decode_INCLUDE_DIRS - Directories containing the BME280Decode include files.
+# BME280Decode_IDL_DIRS - Directories containing the BME280Decode IDL files.
+# BME280Decode_LIBRARIES - Libraries needed to use BME280Decode.
+# BME280Decode_DEFINITIONS - Compiler flags for BME280Decode.
+# BME280Decode_VERSION - The version of BME280Decode found.
+# BME280Decode_VERSION_MAJOR - The major version of BME280Decode found.
+# BME280Decode_VERSION_MINOR - The minor version of BME280Decode found.
+# BME280Decode_VERSION_REVISION - The revision version of BME280Decode found.
+# BME280Decode_VERSION_CANDIDATE - The candidate version of BME280Decode found.
+
+message(STATUS "Found BME280Decode-@PROJECT_VERSION@")
+set(BME280Decode_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(BME280Decode_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(BME280Decode_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(BME280Decode_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(BME280Decode_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(BME280Decode_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(BME280Decode_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(BME280Decode_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(BME280Decode_VERSION @PROJECT_VERSION@)
+set(BME280Decode_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(BME280Decode_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(BME280Decode_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(BME280Decode_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+

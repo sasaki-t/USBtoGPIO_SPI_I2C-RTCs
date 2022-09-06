@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rtc:RtcProfile rtc:version="0.3" rtc:id="RTC:TakeshiSasaki:GPIO:Adafruit_FT232H_Breakout:1.0.0" xmlns:rtc="http://www.openrtp.org/namespaces/rtc" xmlns:rtcExt="http://www.openrtp.org/namespaces/rtc_ext" xmlns:rtcDoc="http://www.openrtp.org/namespaces/rtc_doc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <rtc:BasicInfo xsi:type="rtcExt:basic_info_ext" rtcExt:saveProject="Adafruit_FT232H_Breakout" rtc:updateDate="2021-11-03T22:23:31.000+09:00" rtc:creationDate="2021-09-21T22:55:04.000+09:00" rtc:abstract="Adafruit FT232H Breakoutを使用したUSB-GPIO, SPI, I2C変換コンポーネント。GPIOに関しては、まずコンフィギュレーションから各ピンをディジタル入力として使うか、ディジタル出力として使うかを選択する。出力として設定したピンに対しては、対応するInPortに値が入力されると、その値に応じてHighまたはLowを出力する。入力として設定したピンに対しては、HighまたはLowを読み込み、それに応じた値を対応するOutPortから出力する。I2C/SPIについても、まずコンフィギュレーションからいずれかを利用するか、利用するならばそのパラメータを設定する。送信するデータや受信バイト数はInPortから入力し、受信したデータはOutPortから出力される。" rtc:version="1.0.0" rtc:vendor="TakeshiSasaki" rtc:maxInstances="1" rtc:executionType="PeriodicExecutionContext" rtc:executionRate="1000.0" rtc:description="USB to Digital IO and I2C/SPI components using Adafruit FT232H Breakout" rtc:category="GPIO" rtc:componentKind="DataFlowComponent" rtc:activityType="PERIODIC" rtc:componentType="COMMUTATIVE" rtc:name="Adafruit_FT232H_Breakout">
+        <rtcDoc:Doc rtcDoc:reference="ライブラリのセットアップについて&lt;br/&gt;https://learn.adafruit.com/circuitpython-on-any-computer-with-ft232h" rtcDoc:license="" rtcDoc:creator="佐々木毅 (Takeshi SASAKI) &lt;sasaki-t(_at_)ieee.org&gt;" rtcDoc:algorithm="" rtcDoc:inout="InPort&lt;br/&gt;ポート名/型/説明&lt;br/&gt;C7_0out/TimedLong/C7~C0のうち、出力ピンとしているピンからの出力に対応した値。&lt;br/&gt;C7から順に、Highとする場合は1、Lowとする場合は0とした8ビットの値を入力する。&lt;br/&gt;入力ピンとして指定されているピンに対してはどちらを入力しても影響はない。&lt;br/&gt;例えば、C7, C5, C4をHigh、他をLowとする場合には10110000、つまり176を入力する。&lt;br/&gt;D*out/TimedLong/D*を出力ピンとしている場合のピンからの出力に対応した値。&lt;br/&gt;Highとする場合は1を、Lowとする場合は0を入力する。&lt;br/&gt;入力ピンとして指定されている場合はどちらを入力しても影響はない。&lt;br/&gt;I2C_SPIwcommand_rbytes/TimedOctetSeq/I2CもしくはSPI通信で送信するデータ・受信するデータのバイト数。最終要素の前までが送信データ、最終要素が受信バイト数となる。例えば、1,2,3というデータの場合は1,2という2バイトの値をデバイスに送信し、その後3バイトの情報をデバイスから受信する。受信バイト数が0の場合は送信だけを行い、受信を行わない（例: 1,2,0）。受信バイト数のみが指定されている場合（要素が1つの場合）は送信を行わず受信だけを行う（例: 3）。&lt;br/&gt;OutPort&lt;br/&gt;ポート名/型/説明&lt;br/&gt;C7_0in/TimedLong/C7~C0のうち、入力ピンとしているピンへの入力に対応する値。&lt;br/&gt;C7から順に、Highの場合は1、Lowもしくは出力ピンとして指定している場合は0とした8ビットの値が出力される。&lt;br/&gt;例えば、C7, C5, C4がHigh、他がLowもしくは出力ピンである場合には10110000、つまり176が出力される。&lt;br/&gt;全てのピンが出力ピンに指定されている場合は出力を行わない。&lt;br/&gt;D*in/TimedLong/D*を入力ピンとしている場合のピンへの入力に対応する値。&lt;br/&gt;Highの場合は1が、Lowの場合は0が出力される。&lt;br/&gt;出力ピンに指定されている場合は出力を行わない。&lt;br/&gt;I2C_SPIread/TimedOctetSeq/I2CもしくはSPI通信で受信したデータ。" rtcDoc:description="Adafruit FT232H Breakoutを使用したUSB-GPIO, SPI, I2C変換コンポーネント。GPIOに関しては、まずコンフィギュレーションから各ピンをディジタル入力として使うか、ディジタル出力として使うかを選択する。出力として設定したピンに対しては、対応するInPortに値が入力されると、その値に応じてHighまたはLowを出力する。入力として設定したピンに対しては、HighまたはLowを読み込み、それに応じた値を対応するOutPortから出力する。I2C/SPIについても、まずコンフィギュレーションからいずれかを利用するか、利用するならばそのパラメータを設定する。送信するデータや受信バイト数はInPortから入力し、受信したデータはOutPortから出力される。&lt;br/&gt;pyusb（Mac, Linuxの場合はlibusb）, pyftdiおよびAdafruit Blinkaのインストールが必要。"/>
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+    </rtc:BasicInfo>
+    <rtc:Actions>
+        <rtc:OnInitialize xsi:type="rtcDoc:action_status_doc" rtc:implemented="true"/>
+        <rtc:OnFinalize xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnStartup xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnShutdown xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnActivated xsi:type="rtcDoc:action_status_doc" rtc:implemented="true">
+            <rtcDoc:Doc rtcDoc:postCondition="" rtcDoc:preCondition="" rtcDoc:description="コンフィギュレーション変数を読み込み、GPIOの各ピンを入力もしくは出力ピンに設定する。また、I2CもしくはSPI通信の設定を行う。"/>
+        </rtc:OnActivated>
+        <rtc:OnDeactivated xsi:type="rtcDoc:action_status_doc" rtc:implemented="true">
+            <rtcDoc:Doc rtcDoc:postCondition="" rtcDoc:preCondition="" rtcDoc:description="GPIOの全ての出力ピンにLowを出力する。I2CもしくはSPI通信を終了する。"/>
+        </rtc:OnDeactivated>
+        <rtc:OnAborting xsi:type="rtcDoc:action_status_doc" rtc:implemented="true">
+            <rtcDoc:Doc rtcDoc:postCondition="" rtcDoc:preCondition="" rtcDoc:description="GPIOの全ての出力ピンにLowを出力する。I2CもしくはSPI通信を終了する。"/>
+        </rtc:OnAborting>
+        <rtc:OnError xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnReset xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnExecute xsi:type="rtcDoc:action_status_doc" rtc:implemented="true">
+            <rtcDoc:Doc rtcDoc:postCondition="" rtcDoc:preCondition="" rtcDoc:description="InPortから値を読み込み、GPIOの各出力ピンから値に対応してHighまたはLowを出力する。&lt;br/&gt;GPIO各入力ピンからHighまたはLowを読み込みOutPortから対応する値を出力する。&lt;br/&gt;I2CもしくはSPI通信が設定されている場合は、InPortから読み込んだ値に応じてデバイスへの書き込みやデバイスからの読み込みを行い、OutPortからの出力を行う。"/>
+        </rtc:OnExecute>
+        <rtc:OnStateUpdate xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnRateChanged xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+    </rtc:Actions>
+    <rtc:ConfigurationSet>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="0b11111111" rtc:type="string" rtc:name="GPIO_C7_0_IO_select">
+            <rtcDoc:Doc rtcDoc:constraint="" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="C7~C0をそれぞれディジタル入力ピンとして使用するか、ディジタル出力ピンとして使用するかを指定する。&lt;br/&gt;C7から順に入力ピンとして指定する場所は1、出力ピンとして使用するところは0とし、それを2進法で表現された数とみなして整数値を入力する。0bや0xを値の前につけることで2進法や16進法で指定することも可能。&lt;br/&gt;例えば、C7,C5,C4を出力ピン、他を入力ピンとする場合は01001111となるため、そのまま2進法で0b01001111としても良いし、16進法に直して0x4f、10進法に直して79としても良い。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="0b11111111" rtcDoc:dataname="GPIO_C7_0_IO_select"/>
+            <rtcExt:Properties rtcExt:value="text" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="0b1111" rtc:type="string" rtc:name="GPIO_D7_4_IO_select">
+            <rtcDoc:Doc rtcDoc:constraint="" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="D7~D4をそれぞれディジタル入力ピンとして使用するか、ディジタル出力ピンとして使用するかを指定する。&lt;br/&gt;D7から順に入力ピンとして指定する場所は1、出力ピンとして使用するところは0とし、それを2進法で表現された数とみなして整数値を入力する。0bや0xを値の前につけることで2進法や16進法で指定することも可能。&lt;br/&gt;例えば、D7,D5,D4を出力ピン、他を入力ピンとする場合は0100となるため、そのまま2進法で0b0100としても良いし、16進法に直して0x4、10進法に直して4としても良い。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="0b1111" rtcDoc:dataname="GPIO_D7_4_IO_select"/>
+            <rtcExt:Properties rtcExt:value="text" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="100000" rtc:type="int" rtc:name="SPI_baudrate">
+            <rtc:Constraint>
+                <rtc:ConstraintUnitType>
+                    <rtc:propertyIsGreaterThan rtc:matchCase="false">
+                        <rtc:Literal>0</rtc:Literal>
+                    </rtc:propertyIsGreaterThan>
+                </rtc:ConstraintUnitType>
+            </rtc:Constraint>
+            <rtcDoc:Doc rtcDoc:constraint="x&gt;0" rtcDoc:range="" rtcDoc:unit="Hz" rtcDoc:description="SPI通信のクロックレート。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="100000" rtcDoc:dataname="SPI_baudrate"/>
+            <rtcExt:Properties rtcExt:value="text" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="0" rtc:type="int" rtc:name="SPI_mode">
+            <rtc:Constraint>
+                <rtc:ConstraintUnitType>
+                    <rtc:Or>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>0</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>1</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>2</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>3</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                    </rtc:Or>
+                </rtc:ConstraintUnitType>
+            </rtc:Constraint>
+            <rtcDoc:Doc rtcDoc:constraint="(0,1,2,3)" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="SPI通信のクロックの極性(polarity)と位相(phase)を決定する番号。0の時はいずれも0、1の時は極性が0で位相が1、2の時は極性が1で位相が0、3の時はいずれも1となる。&lt;br/&gt;SPIを使用しない場合はこの設定は無視される。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="0" rtcDoc:dataname="SPI_mode"/>
+            <rtcExt:Properties rtcExt:value="radio" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="D4" rtc:type="string" rtc:name="SPI_cs_pin">
+            <rtc:Constraint>
+                <rtc:ConstraintUnitType>
+                    <rtc:Or>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>D4</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>D5</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>D6</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>D7</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                    </rtc:Or>
+                </rtc:ConstraintUnitType>
+            </rtc:Constraint>
+            <rtcDoc:Doc rtcDoc:constraint="(D4,D5,D6,D7)" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="SPI通信でCS(chip select)ピンとして利用するピン（BlinkaではCS0(D3)ピンを使用しないため、GPIOの1つをCSピンとして使用する必要がある）。D4～D7の中から1つを選択する。CSピンとして使用されるピンはGPIOの設定(GPIO_D7_4_IO_select)で出力ピンとする必要がある。また、CSピンとして指定したピンに対する入力ポートからの値の変更は無視される。&lt;br/&gt;SPIを使用しない場合はこの設定は無視される。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="D4" rtcDoc:dataname="SPI_cs_pin"/>
+            <rtcExt:Properties rtcExt:value="radio" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="0" rtc:type="int" rtc:name="SPI_cs_talking">
+            <rtc:Constraint>
+                <rtc:ConstraintUnitType>
+                    <rtc:Or>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>0</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>1</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                    </rtc:Or>
+                </rtc:ConstraintUnitType>
+            </rtc:Constraint>
+            <rtcDoc:Doc rtcDoc:constraint="(0,1)" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="SPI通信での通信時のCS(chip select)ピンの状態。通信時にLowとする場合は0、Highとする場合には1となる。&lt;br/&gt;SPIを使用しない場合はこの設定は無視される。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="0" rtcDoc:dataname="SPI_cs_talking"/>
+            <rtcExt:Properties rtcExt:value="radio" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="0x08" rtc:type="string" rtc:name="I2C_device_address">
+            <rtcDoc:Doc rtcDoc:constraint="" rtcDoc:range="[0x08, 0x77]" rtcDoc:unit="" rtcDoc:description="I2Cデバイスの7ビットアドレス。0bや0xを値の前につけることで2進法や16進法で指定することも可能。&lt;br/&gt;I2Cを使用しない場合はこの設定は無視される。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="0x08" rtcDoc:dataname="I2C_device_address"/>
+            <rtcExt:Properties rtcExt:value="text" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="None" rtc:type="string" rtc:name="SER_select">
+            <rtc:Constraint>
+                <rtc:ConstraintUnitType>
+                    <rtc:Or>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>None</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>I2C</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>SPI</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                    </rtc:Or>
+                </rtc:ConstraintUnitType>
+            </rtc:Constraint>
+            <rtcDoc:Doc rtcDoc:constraint="(None,I2C,SPI)" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="I2CもしくはSPI通信を使用するか、使用しないかを選択する。I2CかSPIであればそれぞれの通信を使用し、Noneであれば使用しない。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="None" rtcDoc:dataname="SER_select"/>
+            <rtcExt:Properties rtcExt:value="radio" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="ms" rtc:defaultValue="1000" rtc:type="int" rtc:name="SER_timeout">
+            <rtc:Constraint>
+                <rtc:ConstraintUnitType>
+                    <rtc:propertyIsGreaterThanOrEqualTo rtc:matchCase="false">
+                        <rtc:Literal>0</rtc:Literal>
+                    </rtc:propertyIsGreaterThanOrEqualTo>
+                </rtc:ConstraintUnitType>
+            </rtc:Constraint>
+            <rtcDoc:Doc rtcDoc:constraint="x&gt;=0" rtcDoc:range="" rtcDoc:unit="ms" rtcDoc:description="I2CもしくはSPI通信においてバスをロックするときの最大待ち時間。この時間を超えてもバスがロックできない場合はエラーとする。&lt;br/&gt;SPIやI2Cを使用しない場合はこの設定は無視される。" rtcDoc:defaultValue="1000" rtcDoc:dataname="SER_timeout"/>
+            <rtcExt:Properties rtcExt:value="text" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+    </rtc:ConfigurationSet>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="LEFT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="C7_0out" rtc:portType="DataInPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="C7~C0のうち、出力ピンとしているピンからの出力に対応した値。&lt;br/&gt;C7から順に、Highとする場合は1、Lowとする場合は0とした8ビットの値を入力する。&lt;br/&gt;入力ピンとして指定されているピンに対してはどちらを入力しても影響はない。&lt;br/&gt;例えば、C7, C5, C4をHigh、他をLowとする場合には10110000、つまり176を入力する。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="LEFT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="D4out" rtc:portType="DataInPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="D4を出力ピンとしている場合のピンからの出力に対応した値。&lt;br/&gt;Highとする場合は1を、Lowとする場合は0を入力する。&lt;br/&gt;入力ピンとして指定されている場合はどちらを入力しても影響はない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="LEFT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="D5out" rtc:portType="DataInPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="D5を出力ピンとしている場合のピンからの出力に対応した値。&lt;br/&gt;Highとする場合は1を、Lowとする場合は0を入力する。&lt;br/&gt;入力ピンとして指定されている場合はどちらを入力しても影響はない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="LEFT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="D6out" rtc:portType="DataInPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="D6を出力ピンとしている場合のピンからの出力に対応した値。&lt;br/&gt;Highとする場合は1を、Lowとする場合は0を入力する。&lt;br/&gt;入力ピンとして指定されている場合はどちらを入力しても影響はない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="LEFT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="D7out" rtc:portType="DataInPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="D7を出力ピンとしている場合のピンからの出力に対応した値。&lt;br/&gt;Highとする場合は1を、Lowとする場合は0を入力する。&lt;br/&gt;入力ピンとして指定されている場合はどちらを入力しても影響はない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="LEFT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedOctetSeq" rtc:name="I2C_SPIwcommand_rbytes" rtc:portType="DataInPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="データに依存。" rtcDoc:type="RTC::TimedOctetSeq" rtcDoc:description="I2CもしくはSPI通信で送信するデータ・受信するデータのバイト数。&lt;br/&gt;最終要素の前までが送信データ、最終要素が受信バイト数となる。例えば、1,2,3というデータの場合は1,2という2バイトの値をデバイスに送信し、その後3バイトの情報をデバイスから受信する。&lt;br/&gt;受信バイト数が0の場合は送信だけを行い、受信を行わない（例: 1,2,0）。&lt;br/&gt;受信バイト数のみが指定されている場合（要素が1つの場合）は送信を行わず受信だけを行う（例: 3）。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="C7_0in" rtc:portType="DataOutPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="C7~C0のうち、入力ピンとしているピンへの入力に対応する値。&lt;br/&gt;C7から順に、Highの場合は1、Lowもしくは出力ピンとして指定している場合は0とした8ビットの値が出力される。&lt;br/&gt;例えば、C7, C5, C4がHigh、他がLowもしくは出力ピンである場合には10110000、つまり176が出力される。&lt;br/&gt;全てのピンが出力ピンに指定されている場合は出力を行わない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="D4in" rtc:portType="DataOutPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="D4を入力ピンとしている場合のピンへの入力に対応する値。&lt;br/&gt;Highの場合は1が、Lowの場合は0が出力される。&lt;br/&gt;出力ピンに指定されている場合は出力を行わない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="D5in" rtc:portType="DataOutPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="D5を入力ピンとしている場合のピンへの入力に対応する値。&lt;br/&gt;Highの場合は1が、Lowの場合は0が出力される。&lt;br/&gt;出力ピンに指定されている場合は出力を行わない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="D6in" rtc:portType="DataOutPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="D6を入力ピンとしている場合のピンへの入力に対応する値。&lt;br/&gt;Highの場合は1が、Lowの場合は0が出力される。&lt;br/&gt;出力ピンに指定されている場合は出力を行わない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="D7in" rtc:portType="DataOutPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="D7を入力ピンとしている場合のピンへの入力に対応する値。&lt;br/&gt;Highの場合は1が、Lowの場合は0が出力される。&lt;br/&gt;出力ピンに指定されている場合は出力を行わない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedOctetSeq" rtc:name="I2C_SPIread" rtc:portType="DataOutPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="データに依存。" rtcDoc:type="RTC::TimedOctetSeq" rtcDoc:description="I2CもしくはSPI通信で受信したデータ。"/>
+    </rtc:DataPorts>
+    <rtc:Language xsi:type="rtcExt:language_ext" rtc:kind="Python"/>
+</rtc:RtcProfile>

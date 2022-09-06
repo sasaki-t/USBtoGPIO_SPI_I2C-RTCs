@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rtc:RtcProfile rtc:version="0.3" rtc:id="RTC:TakeshiSasaki:Sensor:BME280Decode:1.0.0" xmlns:rtc="http://www.openrtp.org/namespaces/rtc" xmlns:rtcExt="http://www.openrtp.org/namespaces/rtc_ext" xmlns:rtcDoc="http://www.openrtp.org/namespaces/rtc_doc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <rtc:BasicInfo xsi:type="rtcExt:basic_info_ext" rtcExt:saveProject="BME280Decode" rtc:updateDate="2021-11-10T21:53:36.000+09:00" rtc:creationDate="2021-10-21T02:08:20.000+09:00" rtc:abstract="BME280の8バイトのバイト列(press_msb, press_lsb, press_xlsb, temp_msb, temp_lsb, temp_xlsb, hum_msb, hum_lsb)とキャリブレーションデータ(calib00～calib41)から気圧、温度、湿度を計算し、各出力ポートから出力する。キャリブレーションデータはコンフィギュレーションから入力する。" rtc:version="1.0.0" rtc:vendor="TakeshiSasaki" rtc:maxInstances="1" rtc:executionType="PeriodicExecutionContext" rtc:executionRate="1000.0" rtc:description="Convert BME280 raw data to pressure, temperature, and humidity measurement" rtc:category="Sensor" rtc:componentKind="DataFlowComponent" rtc:activityType="PERIODIC" rtc:componentType="COMMUTATIVE" rtc:name="BME280Decode">
+        <rtcDoc:Doc rtcDoc:reference="" rtcDoc:license="" rtcDoc:creator="佐々木毅 (Takeshi SASAKI) &lt;sasaki-t(_at_)ieee.org&gt;" rtcDoc:algorithm="気圧、温度、湿度の計算式はBME280データシートを参照。" rtcDoc:inout="InPort&lt;br/&gt;ポート名/型/説明&lt;br/&gt;SensorByteData/TimedOctetSeq/センサから得られるアドレス0xF7から0xFEの8バイトのバイト列。&lt;br/&gt;OutPort&lt;br/&gt;ポート名/型/説明&lt;br/&gt;Pressure/TimedDouble/計測した圧力[hPa]。&lt;br/&gt;Temperature/TimedDouble/計測した温度[℃]。&lt;br/&gt;Humidity/TimedDouble/計測した湿度[%]。" rtcDoc:description="BME280の8バイトのバイト列(press_msb, press_lsb, press_xlsb, temp_msb, temp_lsb, temp_xlsb, hum_msb, hum_lsb)とキャリブレーションデータ(calib00～calib41)から気圧、温度、湿度を計算し、各出力ポートから出力する。キャリブレーションデータはコンフィギュレーションから入力する。"/>
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+    </rtc:BasicInfo>
+    <rtc:Actions>
+        <rtc:OnInitialize xsi:type="rtcDoc:action_status_doc" rtc:implemented="true"/>
+        <rtc:OnFinalize xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnStartup xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnShutdown xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnActivated xsi:type="rtcDoc:action_status_doc" rtc:implemented="true">
+            <rtcDoc:Doc rtcDoc:postCondition="" rtcDoc:preCondition="" rtcDoc:description="キャリブレーションデータをコンフィギュレーションから読み取る。"/>
+        </rtc:OnActivated>
+        <rtc:OnDeactivated xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnAborting xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnError xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnReset xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnExecute xsi:type="rtcDoc:action_status_doc" rtc:implemented="true">
+            <rtcDoc:Doc rtcDoc:postCondition="" rtcDoc:preCondition="" rtcDoc:description="入力ポートからのセンサデータとキャリブレーションパラメータから気圧、温度、湿度を計算し、それぞれの出力ポートから出力する。"/>
+        </rtc:OnExecute>
+        <rtc:OnStateUpdate xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnRateChanged xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+    </rtc:Actions>
+    <rtc:ConfigurationSet>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="346f03673200cc8c1bd6d00bb1146c00f9ff0c3020d18813004b" rtc:type="string" rtc:name="calib00_25">
+            <rtcDoc:Doc rtcDoc:constraint="" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="アドレス0x88から0xA1の26バイトのキャリブレーションデータ。&lt;br/&gt;バイト列をhex文字列（1バイトにつき 2つの16進数を含む文字列）もしくはutf-8でデコードした文字列で指定する。どちらの文字列なのかによってコンフィギュレーション変数calib_data_typeも変更すること。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="" rtcDoc:dataname="calib00_25"/>
+            <rtcExt:Properties rtcExt:value="text" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="4c0100182e031e" rtc:type="string" rtc:name="calib26_41">
+            <rtcDoc:Doc rtcDoc:constraint="" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="アドレス0xE1から0xF0の16バイトのキャリブレーションデータのバイト列。使用するのは最初の7バイトのため、7バイト以上のデータがあればよい。&lt;br/&gt;バイト列をhex文字列（1バイトにつき 2つの16進数を含む文字列）もしくはutf-8でデコードした文字列で指定する。どちらの文字列なのかによってコンフィギュレーション変数calib_data_typeも変更すること。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="" rtcDoc:dataname="calib26_41"/>
+            <rtcExt:Properties rtcExt:value="text" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="hex" rtc:type="string" rtc:name="calib_data_type">
+            <rtc:Constraint>
+                <rtc:ConstraintUnitType>
+                    <rtc:Or>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>utf-8</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>hex</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                    </rtc:Or>
+                </rtc:ConstraintUnitType>
+            </rtc:Constraint>
+            <rtcDoc:Doc rtcDoc:constraint="(utf-8, hex)" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="キャリブレーションデータ(calib0_25, calib26_41）をhex文字列（1バイトにつき 2つの16進数を含む文字列）として入力したのかutf-8でデコードした文字列で入力したのかを指定する。" rtcDoc:defaultValue="hex" rtcDoc:dataname="calib_data_type"/>
+            <rtcExt:Properties rtcExt:value="radio" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+    </rtc:ConfigurationSet>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="LEFT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedOctetSeq" rtc:name="SensorByteData" rtc:portType="DataInPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="8" rtcDoc:type="RTC::TimedOctetSeq" rtcDoc:description="センサから得られるアドレス0xF7から0xFEの8バイトのバイト列。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedDouble" rtc:name="Pressure" rtc:portType="DataOutPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="hPa" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedDouble" rtcDoc:description="計測した圧力。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedDouble" rtc:name="Temperature" rtc:portType="DataOutPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="℃" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedDouble" rtcDoc:description="計測した温度。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="C:\Program Files\OpenRTM-aist\1.2.1\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedDouble" rtc:name="Humidity" rtc:portType="DataOutPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="%" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedDouble" rtcDoc:description="計測した湿度。"/>
+    </rtc:DataPorts>
+    <rtc:Language xsi:type="rtcExt:language_ext" rtc:kind="Python"/>
+</rtc:RtcProfile>

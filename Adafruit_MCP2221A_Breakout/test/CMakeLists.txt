@@ -1,0 +1,7 @@
+add_test(NAME ${PROJECT_NAME}_test COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}Test.py -o "manager.components.precreate:${PROJECT_NAME}" -o "manager.components.preconnect:${PROJECT_NAME}0.G0out?port=${PROJECT_NAME}Test0.G0out,${PROJECT_NAME}0.G1out?port=${PROJECT_NAME}Test0.G1out,${PROJECT_NAME}0.G2out?port=${PROJECT_NAME}Test0.G2out,${PROJECT_NAME}0.G3out?port=${PROJECT_NAME}Test0.G3out,${PROJECT_NAME}0.I2Cwcommand_rbytes?port=${PROJECT_NAME}Test0.I2Cwcommand_rbytes,${PROJECT_NAME}0.UARTwcommand_rbytes?port=${PROJECT_NAME}Test0.UARTwcommand_rbytes,${PROJECT_NAME}0.G0in?port=${PROJECT_NAME}Test0.G0in,${PROJECT_NAME}0.G1in?port=${PROJECT_NAME}Test0.G1in,${PROJECT_NAME}0.G2in?port=${PROJECT_NAME}Test0.G2in,${PROJECT_NAME}0.G3in?port=${PROJECT_NAME}Test0.G3in,${PROJECT_NAME}0.I2Cread?port=${PROJECT_NAME}Test0.I2Cread,${PROJECT_NAME}0.UARTread?port=${PROJECT_NAME}Test0.UARTread" -o "manager.components.preactivation:${PROJECT_NAME}0,${PROJECT_NAME}Test0" WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+string(REPLACE ";" "\\;" PYTHONPATH "$ENV{PYTHONPATH}")
+if(UNIX)
+  set_tests_properties(${PROJECT_NAME}_test PROPERTIES ENVIRONMENT "PYTHONPATH=${CMAKE_SOURCE_DIR}:${PYTHONPATH}")
+else()
+  set_tests_properties(${PROJECT_NAME}_test PROPERTIES ENVIRONMENT "PYTHONPATH=${CMAKE_SOURCE_DIR}\;${PYTHONPATH}")
+endif()

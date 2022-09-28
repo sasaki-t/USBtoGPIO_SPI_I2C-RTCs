@@ -1,0 +1,54 @@
+# Adafruit_MCP2221A_Breakout CMake config file
+#
+# This file sets the following variables:
+# Adafruit_MCP2221A_Breakout_FOUND - Always TRUE.
+# Adafruit_MCP2221A_Breakout_INCLUDE_DIRS - Directories containing the Adafruit_MCP2221A_Breakout include files.
+# Adafruit_MCP2221A_Breakout_IDL_DIRS - Directories containing the Adafruit_MCP2221A_Breakout IDL files.
+# Adafruit_MCP2221A_Breakout_LIBRARIES - Libraries needed to use Adafruit_MCP2221A_Breakout.
+# Adafruit_MCP2221A_Breakout_DEFINITIONS - Compiler flags for Adafruit_MCP2221A_Breakout.
+# Adafruit_MCP2221A_Breakout_VERSION - The version of Adafruit_MCP2221A_Breakout found.
+# Adafruit_MCP2221A_Breakout_VERSION_MAJOR - The major version of Adafruit_MCP2221A_Breakout found.
+# Adafruit_MCP2221A_Breakout_VERSION_MINOR - The minor version of Adafruit_MCP2221A_Breakout found.
+# Adafruit_MCP2221A_Breakout_VERSION_REVISION - The revision version of Adafruit_MCP2221A_Breakout found.
+# Adafruit_MCP2221A_Breakout_VERSION_CANDIDATE - The candidate version of Adafruit_MCP2221A_Breakout found.
+
+message(STATUS "Found Adafruit_MCP2221A_Breakout-@PROJECT_VERSION@")
+set(Adafruit_MCP2221A_Breakout_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(Adafruit_MCP2221A_Breakout_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(Adafruit_MCP2221A_Breakout_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(Adafruit_MCP2221A_Breakout_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(Adafruit_MCP2221A_Breakout_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(Adafruit_MCP2221A_Breakout_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(Adafruit_MCP2221A_Breakout_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(Adafruit_MCP2221A_Breakout_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(Adafruit_MCP2221A_Breakout_VERSION @PROJECT_VERSION@)
+set(Adafruit_MCP2221A_Breakout_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(Adafruit_MCP2221A_Breakout_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(Adafruit_MCP2221A_Breakout_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(Adafruit_MCP2221A_Breakout_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+

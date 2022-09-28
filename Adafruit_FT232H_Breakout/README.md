@@ -98,7 +98,7 @@ InPort<br/>ポート名/型/説明<br/>C7_0out/TimedLong/C7-C0のうち、出力
     <td colspan="2">implemented</td>
     <tr>
       <td>Description</td>
-      <td>InPortから値を読み込み、GPIOの各出力ピンから値に対応してHighまたはLowを出力する。<br/>GPIO各入力ピンからHighまたはLowを読み込みOutPortから対応する値を出力する。<br/>I2CもしくはSPI通信が設定されている場合は、InPortから読み込んだ値に応じてデバイスへの書き込みやデバイスからの読み込みを行い、OutPortからの出力を行う。</td>
+      <td>InPortから値を読み込み、GPIOの各出力ピンから値に対応してHighまたはLowを出力する。<br/>GPIOの各入力ピンからHighまたはLowを読み込みOutPortから対応する値を出力する。<br/>I2CもしくはSPI通信が設定されている場合は、InPortから読み込んだ値に応じてデバイスへの書き込みやデバイスからの読み込みを行い、OutPortからの出力を行う。</td>
     </tr>
     <tr>
       <td>PreCondition</td>

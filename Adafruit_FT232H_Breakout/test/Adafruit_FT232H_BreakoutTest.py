@@ -104,7 +104,7 @@ adafruit_ft232h_breakouttest_spec = ["implementation_id", "Adafruit_FT232H_Break
 # 
 # InPort
 # ポート名/型/説明
-# C7_0out/TimedLong/C7~C0のうち、出力ピンとしているピンからの出力に対応した値。
+# C7_0out/TimedLong/C7-C0のうち、出力ピンとしているピンからの出力に対応した値。
 # C7から順に、Highとする場合は1、Lowとする場合は0とした8ビットの値を入力する。
 # 入力ピンとして指定されているピンに対してはどちらを入力しても影響はない。
 # 例えば、C7, C5, C4をHigh、他をLowとする場合には10110000、つまり176を入力する。
@@ -120,7 +120,7 @@ adafruit_ft232h_breakouttest_spec = ["implementation_id", "Adafruit_FT232H_Break
 # 信だけを行う（例: 3）。
 # OutPort
 # ポート名/型/説明
-# C7_0in/TimedLong/C7~C0のうち、入力ピンとしているピンへの入力に対応する値。
+# C7_0in/TimedLong/C7-C0のうち、入力ピンとしているピンへの入力に対応する値。
 # C7から順に、Highの場合は1、Lowもしくは出力ピンとして指定している場合は0とした8ビ
 # ットの値が出力される。
 # 例えば、C7, C5,
@@ -147,7 +147,7 @@ class Adafruit_FT232H_BreakoutTest(OpenRTM_aist.DataFlowComponentBase):
 
         self._d_C7_0in = OpenRTM_aist.instantiateDataType(RTC.TimedLong)
         """
-        C7~C0のうち、入力ピンとしているピンへの入力に対応する値。
+        C7-C0のうち、入力ピンとしているピンへの入力に対応する値。
 		C7から順に、Highの場合は1、Lowもしくは出力ピンとして指定している場合は0とした
 		8ビットの値が出力される。
 		例えば、C7, C5,
@@ -203,7 +203,7 @@ class Adafruit_FT232H_BreakoutTest(OpenRTM_aist.DataFlowComponentBase):
         self._I2C_SPIreadIn = OpenRTM_aist.InPort("I2C_SPIread", self._d_I2C_SPIread)
         self._d_C7_0out = OpenRTM_aist.instantiateDataType(RTC.TimedLong)
         """
-        C7~C0のうち、出力ピンとしているピンからの出力に対応した値。
+        C7-C0のうち、出力ピンとしているピンからの出力に対応した値。
 		C7から順に、Highとする場合は1、Lowとする場合は0とした8ビットの値を入力する。
 		入力ピンとして指定されているピンに対してはどちらを入力しても影響はない。
 		例えば、C7, C5,
@@ -269,7 +269,7 @@ class Adafruit_FT232H_BreakoutTest(OpenRTM_aist.DataFlowComponentBase):
         # initialize of configuration-data.
         # <rtc-template block="init_conf_param">
         """
-        C7~C0をそれぞれディジタル入力ピンとして使用するか、ディジタル出力ピンとして使
+        C7-C0をそれぞれディジタル入力ピンとして使用するか、ディジタル出力ピンとして使
 		用するかを指定する。
 		C7から順に入力ピンとして指定する場所は1、出力ピンとして使用するところは0とし
 		、それを2進法で表現された数とみなして整数値を入力する。0bや0xを値の前につける
@@ -283,7 +283,7 @@ class Adafruit_FT232H_BreakoutTest(OpenRTM_aist.DataFlowComponentBase):
         """
         self._GPIO_C7_0_IO_select = ['0b11111111']
         """
-        D7~D4をそれぞれディジタル入力ピンとして使用するか、ディジタル出力ピンとして使
+        D7-D4をそれぞれディジタル入力ピンとして使用するか、ディジタル出力ピンとして使
 		用するかを指定する。
 		D7から順に入力ピンとして指定する場所は1、出力ピンとして使用するところは0とし
 		、それを2進法で表現された数とみなして整数値を入力する。0bや0xを値の前につける
@@ -484,7 +484,7 @@ class Adafruit_FT232H_BreakoutTest(OpenRTM_aist.DataFlowComponentBase):
     ##
         # InPortから値を読み込み、GPIOの各出力ピンから値に対応してHighまたはLowを出力す
 	# る。
-	# GPIO各入力ピンからHighまたはLowを読み込みOutPortから対応する値を出力する。
+	# GPIOの各入力ピンからHighまたはLowを読み込みOutPortから対応する値を出力する。
 	# I2CもしくはSPI通信が設定されている場合は、InPortから読み込んだ値に応じてデバ
 	# イスへの書き込みやデバイスからの読み込みを行い、OutPortからの出力を行う。
     #

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rtc:RtcProfile rtc:version="0.3" rtc:id="RTC:TakeshiSasaki:GPIO:Adafruit_MCP2221A_Breakout:1.0.0" xmlns:rtc="http://www.openrtp.org/namespaces/rtc" xmlns:rtcExt="http://www.openrtp.org/namespaces/rtc_ext" xmlns:rtcDoc="http://www.openrtp.org/namespaces/rtc_doc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <rtc:BasicInfo xsi:type="rtcExt:basic_info_ext" rtcExt:saveProject="Adafruit_MCP2221A_Breakout" rtc:updateDate="2022-09-28T19:24:25.000+09:00" rtc:creationDate="2022-09-18T02:43:20.000+09:00" rtc:abstract="Adafruit MCP2221A Breakoutを使用したUSB-GPIO, I2C, UART変換コンポーネント。GPIOに関しては、まずコンフィギュレーションから各ピンの利用方法（アナログ/ディジタル、入力/出力）を選択する。出力として設定したピンに対しては、対応するInPortに値が入力されると、その値に応じてHigh/Low（ディジタル）や電圧値（アナログ）を出力する。入力として設定したピンに対しては、High/Low（ディジタル）や電圧値（アナログ）を読み込み、それに応じた値を対応するOutPortから出力する。I2CやUARTについても、まずコンフィギュレーションからそれぞれを利用するか、利用するならばそのパラメータを設定する。送信するデータや受信バイト数はInPortから入力し、受信したデータはOutPortから出力される。" rtc:version="1.0.0" rtc:vendor="TakeshiSasaki" rtc:maxInstances="1" rtc:executionType="PeriodicExecutionContext" rtc:executionRate="1000.0" rtc:description="USB to Digital/Analog IO and I2C, UART components using Adafruit MCP2221A Breakout" rtc:category="GPIO" rtc:componentKind="DataFlowComponent" rtc:activityType="PERIODIC" rtc:componentType="COMMUTATIVE" rtc:name="Adafruit_MCP2221A_Breakout">
+        <rtcDoc:Doc rtcDoc:reference="ライブラリのセットアップについて&lt;br/&gt;https://learn.adafruit.com/circuitpython-libraries-on-any-computer-with-mcp2221" rtcDoc:license="" rtcDoc:creator="佐々木毅 (Takeshi SASAKI) &lt;sasaki-t(_at_)ieee.org&gt;" rtcDoc:algorithm="" rtcDoc:inout="InPort&lt;br/&gt;ポート名/型/説明&lt;br/&gt;G*out/TimedLong/G*を出力ピンとしている場合のピンからの出力に対応した値。&lt;br/&gt;ディジタル出力の場合、Highとする場合は1を、Lowとする場合は0を入力する。&lt;br/&gt;アナログ出力の場合、0（0V）から65535（最大電圧、ハードウェアのジャンパで3.3Vか5.0Vを設定）の値で出力電圧を指定する。&lt;br/&gt;DAコンバータは1つのみのため、G2とG3をどちらもアナログ出力とした場合にはG2, G3からは同じ電圧が出力される。&lt;br/&gt;入力ピンとして指定されている場合は何を入力しても影響はない。&lt;br/&gt;I2Cwcommand_rbytes/TimedOctetSeq/I2C通信で送信するデータ・受信するデータのバイト数。&lt;br/&gt;最終要素の前までが送信データ、最終要素が受信バイト数となる。例えば、1,2,3というデータの場合は1,2という2バイトの値をデバイスに送信し、その後3バイトの情報をデバイスから受信する。&lt;br/&gt;受信バイト数が0の場合は送信だけを行い、受信を行わない（例: 1,2,0）。&lt;br/&gt;受信バイト数のみが指定されている場合（要素が1つの場合）は送信を行わず受信だけを行う（例: 3）。&lt;br/&gt;UARTwcommand_rbytes/TimedOctetSeq/UART通信で送信するデータ・受信するデータのバイト数。&lt;br/&gt;最終要素の前までが送信データ、最終要素が受信バイト数となる。例えば、1,2,3というデータの場合は1,2という2バイトの値をデバイスに送信し、その後3バイトの情報をデバイスから受信する。&lt;br/&gt;受信バイト数が0の場合は送信だけを行い、受信を行わない（例: 1,2,0）。&lt;br/&gt;受信バイト数のみが指定されている場合（要素が1つの場合）は送信を行わず受信だけを行う（例: 3）。&lt;br/&gt;例外として、受信バイト数が255の場合には1行受信を行う。&lt;br/&gt;OutPort&lt;br/&gt;ポート名/型/説明&lt;br/&gt;G*in/TimedLong/G*を入力ピンとしている場合のピンへの入力に対応する値。&lt;br/&gt;ディジタル入力の場合、Highの場合は1が、Lowの場合は0が出力される。&lt;br/&gt;アナログ入力の場合、入力電圧に応じて0（0V）から65535（最大電圧、ハードウェアのジャンパで3.3Vか5.0Vを設定）の値が出力される。&lt;br/&gt;出力ピンに指定されている場合は出力を行わない。&lt;br/&gt;I2Cread/TimedOctetSeq/I2C通信で受信したデータ。&lt;br/&gt;UARTread/TimedOctetSeq/UART通信で受信したデータ。" rtcDoc:description="Adafruit MCP2221A Breakoutを使用したUSB-GPIO, I2C, UART変換コンポーネント。GPIOに関しては、まずコンフィギュレーションから各ピンの利用方法（アナログ/ディジタル、入力/出力）を選択する。出力として設定したピンに対しては、対応するInPortに値が入力されると、その値に応じてディジタル出力であればHigh/Low、アナログ出力であれば0-最大電圧（ハードウェアのジャンパで3.3Vか5.0Vを設定）を出力する。入力として設定したピンに対しては、ディジタル入力であればHigh/Low、アナログ入力であれば電圧値を読み込み、それに応じた値を対応するOutPortから出力する。I2CやUARTについても、まずコンフィギュレーションからそれぞれを利用するか、利用するならばそのパラメータを設定する。送信するデータや受信バイト数はInPortから入力し、受信したデータはOutPortから出力される。&lt;br/&gt;Windows, Macの場合はhidapi, pyserialおよびAdafruit Blinkaのインストールが必要。Linuxの場合はこれらに加えlibusb、libudevのインストールが必要。"/>
+        <rtcExt:Properties rtcExt:value="false" rtcExt:name="FSM"/>
+        <rtcExt:Properties rtcExt:value="StaticFSM" rtcExt:name="FSMType"/>
+    </rtc:BasicInfo>
+    <rtc:Actions>
+        <rtc:OnInitialize xsi:type="rtcDoc:action_status_doc" rtc:implemented="true"/>
+        <rtc:OnFinalize xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnStartup xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnShutdown xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnActivated xsi:type="rtcDoc:action_status_doc" rtc:implemented="true">
+            <rtcDoc:Doc rtcDoc:postCondition="" rtcDoc:preCondition="" rtcDoc:description="コンフィギュレーション変数を読み込み、GPIOの各ピンのアナログ/ディジタル、入力/は出力を設定する。また、I2CおよびUART通信の設定を行う。"/>
+        </rtc:OnActivated>
+        <rtc:OnDeactivated xsi:type="rtcDoc:action_status_doc" rtc:implemented="true">
+            <rtcDoc:Doc rtcDoc:postCondition="" rtcDoc:preCondition="" rtcDoc:description="GPIOの全ての出力ピンにLowもしくは0Vを出力する。I2CおよびUART通信を終了する。"/>
+        </rtc:OnDeactivated>
+        <rtc:OnAborting xsi:type="rtcDoc:action_status_doc" rtc:implemented="true">
+            <rtcDoc:Doc rtcDoc:postCondition="" rtcDoc:preCondition="" rtcDoc:description="GPIOの全ての出力ピンにLowもしくは0Vを出力する。I2CおよびUART通信を終了する。"/>
+        </rtc:OnAborting>
+        <rtc:OnError xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnReset xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnExecute xsi:type="rtcDoc:action_status_doc" rtc:implemented="true">
+            <rtcDoc:Doc rtcDoc:postCondition="" rtcDoc:preCondition="" rtcDoc:description="InPortから値を読み込み、GPIOの各出力ピンから値に対応してHigh/Lowやアナログ電圧を出力する。&lt;br/&gt;GPIOの各入力ピンからHighまたはLowを読み込みOutPortから対応する値を出力する。&lt;br/&gt;I2CもしくはUART通信が設定されている場合は、InPortから読み込んだ値に応じてデバイスへの書き込みやデバイスからの読み込みを行い、OutPortからの出力を行う。"/>
+        </rtc:OnExecute>
+        <rtc:OnStateUpdate xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnRateChanged xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+    </rtc:Actions>
+    <rtc:ConfigurationSet>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="DI" rtc:type="string" rtc:name="GPIO_G0_select">
+            <rtc:Constraint>
+                <rtc:ConstraintUnitType>
+                    <rtc:Or>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>DI</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>DO</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                    </rtc:Or>
+                </rtc:ConstraintUnitType>
+            </rtc:Constraint>
+            <rtcDoc:Doc rtcDoc:constraint="(DI,DO)" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="G0ピンの利用方法（ディジタル入力/ディジタル出力）を指定する。&lt;br/&gt;DIであればディジタル入力、DOであればディジタル出力になる。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="DI" rtcDoc:dataname="GPIO_G0_select"/>
+            <rtcExt:Properties rtcExt:value="radio" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="DI" rtc:type="string" rtc:name="GPIO_G1_select">
+            <rtc:Constraint>
+                <rtc:ConstraintUnitType>
+                    <rtc:Or>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>DI</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>DO</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>AI</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                    </rtc:Or>
+                </rtc:ConstraintUnitType>
+            </rtc:Constraint>
+            <rtcDoc:Doc rtcDoc:constraint="(DI,DO,AI)" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="G1ピンの利用方法（ディジタル入力/ディジタル出力/アナログ入力）を指定する。&lt;br/&gt;DIであればディジタル入力、DOであればディジタル出力、AIであればアナログ入力になる。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="DI" rtcDoc:dataname="GPIO_G1_select"/>
+            <rtcExt:Properties rtcExt:value="radio" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="DI" rtc:type="string" rtc:name="GPIO_G2_select">
+            <rtc:Constraint>
+                <rtc:ConstraintUnitType>
+                    <rtc:Or>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>DI</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>DO</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>AI</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>AO</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                    </rtc:Or>
+                </rtc:ConstraintUnitType>
+            </rtc:Constraint>
+            <rtcDoc:Doc rtcDoc:constraint="(DI,DO,AI,AO)" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="G2ピンの利用方法（ディジタル入力/ディジタル出力/アナログ入力/アナログ出力）を指定する。&lt;br/&gt;DIであればディジタル入力、DOであればディジタル出力、AIであればアナログ入力、AOであればアナログ出力になる。DAコンバータは1つのみのため、G2とG3をどちらもアナログ出力とした場合にはG3からも同じ電圧が出力される。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="DI" rtcDoc:dataname="GPIO_G2_select"/>
+            <rtcExt:Properties rtcExt:value="radio" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="DI" rtc:type="string" rtc:name="GPIO_G3_select">
+            <rtc:Constraint>
+                <rtc:ConstraintUnitType>
+                    <rtc:Or>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>DI</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>DO</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>AI</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>AO</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                    </rtc:Or>
+                </rtc:ConstraintUnitType>
+            </rtc:Constraint>
+            <rtcDoc:Doc rtcDoc:constraint="(DI,DO,AI,AO)" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="G3ピンの利用方法（ディジタル入力/ディジタル出力/アナログ入力/アナログ出力）を指定する。&lt;br/&gt;DIであればディジタル入力、DOであればディジタル出力、AIであればアナログ入力、AOであればアナログ出力になる。DAコンバータは1つのみのため、G2とG3をどちらもアナログ出力とした場合にはG2からも同じ電圧が出力される。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="DI" rtcDoc:dataname="GPIO_G3_select"/>
+            <rtcExt:Properties rtcExt:value="radio" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="0" rtc:type="int" rtc:name="I2C_use">
+            <rtc:Constraint>
+                <rtc:ConstraintUnitType>
+                    <rtc:Or>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>0</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>1</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                    </rtc:Or>
+                </rtc:ConstraintUnitType>
+            </rtc:Constraint>
+            <rtcDoc:Doc rtcDoc:constraint="(0,1)" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="I2C通信を使用するか、使用しないかを選択する。1であれば使用し、0であれば使用しない。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="0" rtcDoc:dataname="I2C_use"/>
+            <rtcExt:Properties rtcExt:value="radio" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="0x08" rtc:type="string" rtc:name="I2C_device_address">
+            <rtcDoc:Doc rtcDoc:constraint="" rtcDoc:range="[0x08, 0x77]" rtcDoc:unit="" rtcDoc:description="I2Cデバイスの7ビットアドレス。0bや0xを値の前につけることで2進法や16進法で指定することも可能。&lt;br/&gt;I2Cを使用しない場合はこの設定は無視される。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="0x08" rtcDoc:dataname="I2C_device_address"/>
+            <rtcExt:Properties rtcExt:value="text" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="ms" rtc:defaultValue="1000" rtc:type="int" rtc:name="I2C_timeout">
+            <rtc:Constraint>
+                <rtc:ConstraintUnitType>
+                    <rtc:propertyIsGreaterThanOrEqualTo rtc:matchCase="false">
+                        <rtc:Literal>0</rtc:Literal>
+                    </rtc:propertyIsGreaterThanOrEqualTo>
+                </rtc:ConstraintUnitType>
+            </rtc:Constraint>
+            <rtcDoc:Doc rtcDoc:constraint="x&gt;=0" rtcDoc:range="" rtcDoc:unit="ms" rtcDoc:description="I2C通信においてバスをロックするときの最大待ち時間。この時間を超えてもバスがロックできない場合はエラーとする。&lt;br/&gt;I2Cを使用しない場合はこの設定は無視される。" rtcDoc:defaultValue="1000" rtcDoc:dataname="I2C_timeout"/>
+            <rtcExt:Properties rtcExt:value="text" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="0" rtc:type="int" rtc:name="UART_use">
+            <rtc:Constraint>
+                <rtc:ConstraintUnitType>
+                    <rtc:Or>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>0</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                        <rtc:Constraint>
+                            <rtc:ConstraintUnitType>
+                                <rtc:propertyIsEqualTo rtc:matchCase="false">
+                                    <rtc:Literal>1</rtc:Literal>
+                                </rtc:propertyIsEqualTo>
+                            </rtc:ConstraintUnitType>
+                        </rtc:Constraint>
+                    </rtc:Or>
+                </rtc:ConstraintUnitType>
+            </rtc:Constraint>
+            <rtcDoc:Doc rtcDoc:constraint="(0,1)" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="UART通信を使用するか、使用しないかを選択する。1であれば使用し、0であれば使用しない。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="0" rtcDoc:dataname="UART_use"/>
+            <rtcExt:Properties rtcExt:value="radio" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="" rtc:defaultValue="COM3" rtc:type="string" rtc:name="UART_port">
+            <rtcDoc:Doc rtcDoc:constraint="" rtcDoc:range="" rtcDoc:unit="" rtcDoc:description="UART通信を行う際のポート。Windowsの場合はCOMx、Linuxの場合は/dev/ttACMx等。&lt;br/&gt;UARTを使用しない場合はこの設定は無視される。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="COM3" rtcDoc:dataname="UART_port"/>
+            <rtcExt:Properties rtcExt:value="text" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="bps" rtc:defaultValue="115200" rtc:type="int" rtc:name="UART_baudrate">
+            <rtc:Constraint>
+                <rtc:ConstraintUnitType>
+                    <rtc:propertyIsGreaterThan rtc:matchCase="false">
+                        <rtc:Literal>0</rtc:Literal>
+                    </rtc:propertyIsGreaterThan>
+                </rtc:ConstraintUnitType>
+            </rtc:Constraint>
+            <rtcDoc:Doc rtcDoc:constraint="x&gt;0" rtcDoc:range="" rtcDoc:unit="bps" rtcDoc:description="UART通信の通信速度。&lt;br/&gt;UARTを使用しない場合はこの設定は無視される。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="115200" rtcDoc:dataname="UART_baudrate"/>
+            <rtcExt:Properties rtcExt:value="text" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+        <rtc:Configuration xsi:type="rtcExt:configuration_ext" rtcExt:variableName="" rtc:unit="sec" rtc:defaultValue="10.0" rtc:type="float" rtc:name="UART_read_timeout">
+            <rtcDoc:Doc rtcDoc:constraint="" rtcDoc:range="" rtcDoc:unit="sec" rtcDoc:description="UART通信における読み込みの最大待ち時間。&lt;br/&gt;この時間を超えても指定のバイト数が読み取れない場合はそれまでに読み込んだデータを出力する。&lt;br/&gt;負の値を設定した場合は指定されたバイト数が読み込まれるまで待つ。&lt;br/&gt;UARTを使用しない場合はこの設定は無視される。&lt;br/&gt;アクティブ状態での変更は無効（反映されない）。" rtcDoc:defaultValue="10.0" rtcDoc:dataname="UART_timeout"/>
+            <rtcExt:Properties rtcExt:value="text" rtcExt:name="__widget__"/>
+        </rtc:Configuration>
+    </rtc:ConfigurationSet>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="LEFT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="&lt;RTM_ROOT&gt;\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="G0out" rtc:portType="DataInPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="G0をディジタル出力ピンとしている場合のピンからの出力に対応した値。&lt;br/&gt;Highとする場合は1を、Lowとする場合は0を入力する。&lt;br/&gt;入力ピンとして指定されている場合はどちらを入力しても影響はない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="LEFT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="&lt;RTM_ROOT&gt;\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="G1out" rtc:portType="DataInPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="G1をディジタル出力ピンとしている場合のピンからの出力に対応した値。&lt;br/&gt;Highとする場合は1を、Lowとする場合は0を入力する。&lt;br/&gt;入力ピンとして指定されている場合はどちらを入力しても影響はない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="LEFT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="&lt;RTM_ROOT&gt;\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="G2out" rtc:portType="DataInPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="G2を出力ピンとしている場合のピンからの出力に対応した値。&lt;br/&gt;ディジタル出力の場合、Highとする場合は1を、Lowとする場合は0を入力する。&lt;br/&gt;アナログ出力の場合、0（0V）から65535（最大電圧、ハードウェアのジャンパで3.3Vか5.0Vを設定）の値で出力電圧を指定する。&lt;br/&gt;DAコンバータは1つのみのため、G2とG3をどちらもアナログ出力とした場合にはG3からも同じ電圧が出力される。&lt;br/&gt;入力ピンとして指定されている場合は何を入力しても影響はない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="LEFT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="&lt;RTM_ROOT&gt;\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="G3out" rtc:portType="DataInPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="G3を出力ピンとしている場合のピンからの出力に対応した値。&lt;br/&gt;ディジタル出力の場合、Highとする場合は1を、Lowとする場合は0を入力する。&lt;br/&gt;アナログ出力の場合、0（0V）から65535（最大電圧、ハードウェアのジャンパで3.3Vか5.0Vを設定）の値で出力電圧を指定する。&lt;br/&gt;DAコンバータは1つのみのため、G2とG3をどちらもアナログ出力とした場合にはG3からも同じ電圧が出力される。&lt;br/&gt;入力ピンとして指定されている場合は何を入力しても影響はない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="LEFT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="&lt;RTM_ROOT&gt;\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedOctetSeq" rtc:name="I2Cwcommand_rbytes" rtc:portType="DataInPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="データに依存。" rtcDoc:type="RTC::TimedOctetSeq" rtcDoc:description="I2C通信で送信するデータ・受信するデータのバイト数。&lt;br/&gt;最終要素の前までが送信データ、最終要素が受信バイト数となる。例えば、1,2,3というデータの場合は1,2という2バイトの値をデバイスに送信し、その後3バイトの情報をデバイスから受信する。&lt;br/&gt;受信バイト数が0の場合は送信だけを行い、受信を行わない（例: 1,2,0）。&lt;br/&gt;受信バイト数のみが指定されている場合（要素が1つの場合）は送信を行わず受信だけを行う（例: 3）。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="LEFT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="&lt;RTM_ROOT&gt;\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedOctetSeq" rtc:name="UARTwcommand_rbytes" rtc:portType="DataInPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="データに依存。" rtcDoc:type="RTC::TimedOctetSeq" rtcDoc:description="UART通信で送信するデータ・受信するデータのバイト数。&lt;br/&gt;最終要素の前までが送信データ、最終要素が受信バイト数となる。例えば、1,2,3というデータの場合は1,2という2バイトの値をデバイスに送信し、その後3バイトの情報をデバイスから受信する。&lt;br/&gt;受信バイト数が0の場合は送信だけを行い、受信を行わない（例: 1,2,0）。&lt;br/&gt;受信バイト数のみが指定されている場合（要素が1つの場合）は送信を行わず受信だけを行う（例: 3）。&lt;br/&gt;例外として、受信バイト数が255の場合には1行受信を行う。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="&lt;RTM_ROOT&gt;\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="G0in" rtc:portType="DataOutPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="G0をディジタル入力ピンとしている場合のピンへの入力に対応する値。&lt;br/&gt;Highの場合は1が、Lowの場合は0が出力される。&lt;br/&gt;出力ピンに指定されている場合は出力を行わない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="&lt;RTM_ROOT&gt;\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="G1in" rtc:portType="DataOutPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="G1を入力ピンとしている場合のピンへの入力に対応する値。&lt;br/&gt;ディジタル入力の場合、Highの場合は1が、Lowの場合は0が出力される。&lt;br/&gt;アナログ入力の場合、入力電圧に応じて0（0V）から65535（最大電圧、ハードウェアのジャンパで3.3Vか5.0Vを設定）の値が出力される。&lt;br/&gt;出力ピンに指定されている場合は出力を行わない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="&lt;RTM_ROOT&gt;\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="G2in" rtc:portType="DataOutPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="G2を入力ピンとしている場合のピンへの入力に対応する値。&lt;br/&gt;ディジタル入力の場合、Highの場合は1が、Lowの場合は0が出力される。&lt;br/&gt;アナログ入力の場合、入力電圧に応じて0（0V）から65535（最大電圧、ハードウェアのジャンパで3.3Vか5.0Vを設定）の値が出力される。&lt;br/&gt;出力ピンに指定されている場合は出力を行わない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="&lt;RTM_ROOT&gt;\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedLong" rtc:name="G3in" rtc:portType="DataOutPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="1" rtcDoc:type="RTC::TimedLong" rtcDoc:description="G3を入力ピンとしている場合のピンへの入力に対応する値。&lt;br/&gt;ディジタル入力の場合、Highの場合は1が、Lowの場合は0が出力される。&lt;br/&gt;アナログ入力の場合、入力電圧に応じて0（0V）から65535（最大電圧、ハードウェアのジャンパで3.3Vか5.0Vを設定）の値が出力される。&lt;br/&gt;出力ピンに指定されている場合は出力を行わない。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="&lt;RTM_ROOT&gt;\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedOctetSeq" rtc:name="I2Cread" rtc:portType="DataOutPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="データに依存。" rtcDoc:type="RTC::TimedOctetSeq" rtcDoc:description="I2C通信で受信したデータ。"/>
+    </rtc:DataPorts>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="RIGHT" rtcExt:variableName="" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="&lt;RTM_ROOT&gt;\rtm\idl\BasicDataType.idl" rtc:type="RTC::TimedOctetSeq" rtc:name="UARTread" rtc:portType="DataOutPort">
+        <rtcDoc:Doc rtcDoc:operation="" rtcDoc:occerrence="" rtcDoc:unit="" rtcDoc:semantics="" rtcDoc:number="データに依存。" rtcDoc:type="RTC::TimedOctetSeq" rtcDoc:description="UART通信で受信したデータ。"/>
+    </rtc:DataPorts>
+    <rtc:Language xsi:type="rtcExt:language_ext" rtc:kind="Python"/>
+</rtc:RtcProfile>

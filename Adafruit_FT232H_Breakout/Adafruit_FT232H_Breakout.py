@@ -109,7 +109,7 @@ adafruit_ft232h_breakout_spec = ["implementation_id", "Adafruit_FT232H_Breakout"
 # 
 # InPort
 # ポート名/型/説明
-# C7_0out/TimedLong/C7~C0のうち、出力ピンとしているピンからの出力に対応した値。
+# C7_0out/TimedLong/C7-C0のうち、出力ピンとしているピンからの出力に対応した値。
 # C7から順に、Highとする場合は1、Lowとする場合は0とした8ビットの値を入力する。
 # 入力ピンとして指定されているピンに対してはどちらを入力しても影響はない。
 # 例えば、C7, C5, C4をHigh、他をLowとする場合には10110000、つまり176を入力する。
@@ -125,7 +125,7 @@ adafruit_ft232h_breakout_spec = ["implementation_id", "Adafruit_FT232H_Breakout"
 # 信だけを行う（例: 3）。
 # OutPort
 # ポート名/型/説明
-# C7_0in/TimedLong/C7~C0のうち、入力ピンとしているピンへの入力に対応する値。
+# C7_0in/TimedLong/C7-C0のうち、入力ピンとしているピンへの入力に対応する値。
 # C7から順に、Highの場合は1、Lowもしくは出力ピンとして指定している場合は0とした8ビ
 # ットの値が出力される。
 # 例えば、C7, C5,
@@ -142,7 +142,7 @@ adafruit_ft232h_breakout_spec = ["implementation_id", "Adafruit_FT232H_Breakout"
 # 
 # </rtc-template>
 class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
-    
+	
     ##
     # @brief constructor
     # @param manager Maneger Object
@@ -152,73 +152,73 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
 
         self._d_C7_0out = OpenRTM_aist.instantiateDataType(RTC.TimedLong)
         """
-        C7~C0のうち、出力ピンとしているピンからの出力に対応した値。
-        C7から順に、Highとする場合は1、Lowとする場合は0とした8ビットの値を入力する。
-        入力ピンとして指定されているピンに対してはどちらを入力しても影響はない。
-        例えば、C7, C5,
-        C4をHigh、他をLowとする場合には10110000、つまり176を入力する。
-            - Type: RTC::TimedLong
+        C7-C0のうち、出力ピンとしているピンからの出力に対応した値。
+		C7から順に、Highとする場合は1、Lowとする場合は0とした8ビットの値を入力する。
+		入力ピンとして指定されているピンに対してはどちらを入力しても影響はない。
+		例えば、C7, C5,
+		C4をHigh、他をLowとする場合には10110000、つまり176を入力する。
+	        - Type: RTC::TimedLong
          - Number: 1
         """
         self._C7_0outIn = OpenRTM_aist.InPort("C7_0out", self._d_C7_0out)
         self._d_D4out = OpenRTM_aist.instantiateDataType(RTC.TimedLong)
         """
         D4を出力ピンとしている場合のピンからの出力に対応した値。
-        Highとする場合は1を、Lowとする場合は0を入力する。
-        入力ピンとして指定されている場合はどちらを入力しても影響はない。
-            - Type: RTC::TimedLong
+		Highとする場合は1を、Lowとする場合は0を入力する。
+		入力ピンとして指定されている場合はどちらを入力しても影響はない。
+	        - Type: RTC::TimedLong
          - Number: 1
         """
         self._D4outIn = OpenRTM_aist.InPort("D4out", self._d_D4out)
         self._d_D5out = OpenRTM_aist.instantiateDataType(RTC.TimedLong)
         """
         D5を出力ピンとしている場合のピンからの出力に対応した値。
-        Highとする場合は1を、Lowとする場合は0を入力する。
-        入力ピンとして指定されている場合はどちらを入力しても影響はない。
-            - Type: RTC::TimedLong
+		Highとする場合は1を、Lowとする場合は0を入力する。
+		入力ピンとして指定されている場合はどちらを入力しても影響はない。
+	        - Type: RTC::TimedLong
          - Number: 1
         """
         self._D5outIn = OpenRTM_aist.InPort("D5out", self._d_D5out)
         self._d_D6out = OpenRTM_aist.instantiateDataType(RTC.TimedLong)
         """
         D6を出力ピンとしている場合のピンからの出力に対応した値。
-        Highとする場合は1を、Lowとする場合は0を入力する。
-        入力ピンとして指定されている場合はどちらを入力しても影響はない。
-            - Type: RTC::TimedLong
+		Highとする場合は1を、Lowとする場合は0を入力する。
+		入力ピンとして指定されている場合はどちらを入力しても影響はない。
+	        - Type: RTC::TimedLong
          - Number: 1
         """
         self._D6outIn = OpenRTM_aist.InPort("D6out", self._d_D6out)
         self._d_D7out = OpenRTM_aist.instantiateDataType(RTC.TimedLong)
         """
         D7を出力ピンとしている場合のピンからの出力に対応した値。
-        Highとする場合は1を、Lowとする場合は0を入力する。
-        入力ピンとして指定されている場合はどちらを入力しても影響はない。
-            - Type: RTC::TimedLong
+		Highとする場合は1を、Lowとする場合は0を入力する。
+		入力ピンとして指定されている場合はどちらを入力しても影響はない。
+	        - Type: RTC::TimedLong
          - Number: 1
         """
         self._D7outIn = OpenRTM_aist.InPort("D7out", self._d_D7out)
         self._d_I2C_SPIwcommand_rbytes = OpenRTM_aist.instantiateDataType(RTC.TimedOctetSeq)
         """
         I2CもしくはSPI通信で送信するデータ・受信するデータのバイト数。
-        最終要素の前までが送信データ、最終要素が受信バイト数となる。例えば、1,2,3とい
-        うデータの場合は1,2という2バイトの値をデバイスに送信し、その後3バイトの情報を
-        デバイスから受信する。
-        受信バイト数が0の場合は送信だけを行い、受信を行わない（例: 1,2,0）。
-        受信バイト数のみが指定されている場合（要素が1つの場合）は送信を行わず受信だけ
-        を行う（例: 3）。
-            - Type: RTC::TimedOctetSeq
+		最終要素の前までが送信データ、最終要素が受信バイト数となる。例えば、1,2,3とい
+		うデータの場合は1,2という2バイトの値をデバイスに送信し、その後3バイトの情報を
+		デバイスから受信する。
+		受信バイト数が0の場合は送信だけを行い、受信を行わない（例: 1,2,0）。
+		受信バイト数のみが指定されている場合（要素が1つの場合）は送信を行わず受信だけ
+		を行う（例: 3）。
+	        - Type: RTC::TimedOctetSeq
          - Number: データに依存。
         """
         self._I2C_SPIwcommand_rbytesIn = OpenRTM_aist.InPort("I2C_SPIwcommand_rbytes", self._d_I2C_SPIwcommand_rbytes)
         self._d_C7_0in = OpenRTM_aist.instantiateDataType(RTC.TimedLong)
         """
-        C7~C0のうち、入力ピンとしているピンへの入力に対応する値。
-        C7から順に、Highの場合は1、Lowもしくは出力ピンとして指定している場合は0とした
-        8ビットの値が出力される。
-        例えば、C7, C5,
-        C4がHigh、他がLowもしくは出力ピンである場合には10110000、つまり176が出力され
-        る。
-        全てのピンが出力ピンに指定されている場合は出力を行わない。
+        C7-C0のうち、入力ピンとしているピンへの入力に対応する値。
+		C7から順に、Highの場合は1、Lowもしくは出力ピンとして指定している場合は0とした
+		8ビットの値が出力される。
+		例えば、C7, C5,
+		C4がHigh、他がLowもしくは出力ピンである場合には10110000、つまり176が出力され
+		る。
+		全てのピンが出力ピンに指定されている場合は出力を行わない。
          - Type: RTC::TimedLong
          - Number: 1
         """
@@ -226,8 +226,8 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         self._d_D4in = OpenRTM_aist.instantiateDataType(RTC.TimedLong)
         """
         D4を入力ピンとしている場合のピンへの入力に対応する値。
-        Highの場合は1が、Lowの場合は0が出力される。
-        出力ピンに指定されている場合は出力を行わない。
+		Highの場合は1が、Lowの場合は0が出力される。
+		出力ピンに指定されている場合は出力を行わない。
          - Type: RTC::TimedLong
          - Number: 1
         """
@@ -235,8 +235,8 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         self._d_D5in = OpenRTM_aist.instantiateDataType(RTC.TimedLong)
         """
         D5を入力ピンとしている場合のピンへの入力に対応する値。
-        Highの場合は1が、Lowの場合は0が出力される。
-        出力ピンに指定されている場合は出力を行わない。
+		Highの場合は1が、Lowの場合は0が出力される。
+		出力ピンに指定されている場合は出力を行わない。
          - Type: RTC::TimedLong
          - Number: 1
         """
@@ -244,8 +244,8 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         self._d_D6in = OpenRTM_aist.instantiateDataType(RTC.TimedLong)
         """
         D6を入力ピンとしている場合のピンへの入力に対応する値。
-        Highの場合は1が、Lowの場合は0が出力される。
-        出力ピンに指定されている場合は出力を行わない。
+		Highの場合は1が、Lowの場合は0が出力される。
+		出力ピンに指定されている場合は出力を行わない。
          - Type: RTC::TimedLong
          - Number: 1
         """
@@ -253,8 +253,8 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         self._d_D7in = OpenRTM_aist.instantiateDataType(RTC.TimedLong)
         """
         D7を入力ピンとしている場合のピンへの入力に対応する値。
-        Highの場合は1が、Lowの場合は0が出力される。
-        出力ピンに指定されている場合は出力を行わない。
+		Highの場合は1が、Lowの場合は0が出力される。
+		出力ピンに指定されている場合は出力を行わない。
          - Type: RTC::TimedLong
          - Number: 1
         """
@@ -268,41 +268,41 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         self._I2C_SPIreadOut = OpenRTM_aist.OutPort("I2C_SPIread", self._d_I2C_SPIread)
 
 
-        
+		
 
 
         # initialize of configuration-data.
         # <rtc-template block="init_conf_param">
         """
-        C7~C0をそれぞれディジタル入力ピンとして使用するか、ディジタル出力ピンとして使
-        用するかを指定する。
-        C7から順に入力ピンとして指定する場所は1、出力ピンとして使用するところは0とし
-        、それを2進法で表現された数とみなして整数値を入力する。0bや0xを値の前につける
-        ことで2進法や16進法で指定することも可能。
-        例えば、C7,C5,C4を出力ピン、他を入力ピンとする場合は01001111となるため、その
-        まま2進法で0b01001111としても良いし、16進法に直して0x4f、10進法に直して79とし
-        ても良い。
-        アクティブ状態での変更は無効（反映されない）。
+        C7-C0をそれぞれディジタル入力ピンとして使用するか、ディジタル出力ピンとして使
+		用するかを指定する。
+		C7から順に入力ピンとして指定する場所は1、出力ピンとして使用するところは0とし
+		、それを2進法で表現された数とみなして整数値を入力する。0bや0xを値の前につける
+		ことで2進法や16進法で指定することも可能。
+		例えば、C7,C5,C4を出力ピン、他を入力ピンとする場合は01001111となるため、その
+		まま2進法で0b01001111としても良いし、16進法に直して0x4f、10進法に直して79とし
+		ても良い。
+		アクティブ状態での変更は無効（反映されない）。
          - Name: GPIO_C7_0_IO_select GPIO_C7_0_IO_select
          - DefaultValue: 0b11111111
         """
         self._GPIO_C7_0_IO_select = ['0b11111111']
         """
-        D7~D4をそれぞれディジタル入力ピンとして使用するか、ディジタル出力ピンとして使
-        用するかを指定する。
-        D7から順に入力ピンとして指定する場所は1、出力ピンとして使用するところは0とし
-        、それを2進法で表現された数とみなして整数値を入力する。0bや0xを値の前につける
-        ことで2進法や16進法で指定することも可能。
-        例えば、D7,D5,D4を出力ピン、他を入力ピンとする場合は0100となるため、そのまま
-        2進法で0b0100としても良いし、16進法に直して0x4、10進法に直して4としても良い。
-        アクティブ状態での変更は無効（反映されない）。
+        D7-D4をそれぞれディジタル入力ピンとして使用するか、ディジタル出力ピンとして使
+		用するかを指定する。
+		D7から順に入力ピンとして指定する場所は1、出力ピンとして使用するところは0とし
+		、それを2進法で表現された数とみなして整数値を入力する。0bや0xを値の前につける
+		ことで2進法や16進法で指定することも可能。
+		例えば、D7,D5,D4を出力ピン、他を入力ピンとする場合は0100となるため、そのまま
+		2進法で0b0100としても良いし、16進法に直して0x4、10進法に直して4としても良い。
+		アクティブ状態での変更は無効（反映されない）。
          - Name: GPIO_D7_4_IO_select GPIO_D7_4_IO_select
          - DefaultValue: 0b1111
         """
         self._GPIO_D7_4_IO_select = ['0b1111']
         """
         SPI通信のクロックレート。
-        アクティブ状態での変更は無効（反映されない）。
+		アクティブ状態での変更は無効（反映されない）。
          - Name: SPI_baudrate SPI_baudrate
          - DefaultValue: 100000
          - Unit: Hz
@@ -311,9 +311,9 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         self._SPI_baudrate = [100000]
         """
         SPI通信のクロックの極性(polarity)と位相(phase)を決定する番号。0の時はいずれも
-        0、1の時は極性が0で位相が1、2の時は極性が1で位相が0、3の時はいずれも1となる。
-        SPIを使用しない場合はこの設定は無視される。
-        アクティブ状態での変更は無効（反映されない）。
+		0、1の時は極性が0で位相が1、2の時は極性が1で位相が0、3の時はいずれも1となる。
+		SPIを使用しない場合はこの設定は無視される。
+		アクティブ状態での変更は無効（反映されない）。
          - Name: SPI_mode SPI_mode
          - DefaultValue: 0
          - Constraint: (0,1,2,3)
@@ -321,13 +321,13 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         self._SPI_mode = [0]
         """
         SPI通信でCS(chip
-        select)ピンとして利用するピン（BlinkaではCS0(D3)ピンを使用しないため、GPIOの
-        1つをCSピンとして使用する必要がある）。D4～D7の中から1つを選択する。CSピンと
-        して使用されるピンはGPIOの設定(GPIO_D7_4_IO_select)で出力ピンとする必要がある
-        。また、CSピンとして指定したピンに対する入力ポートからの値の変更は無視される
-        。
-        SPIを使用しない場合はこの設定は無視される。
-        アクティブ状態での変更は無効（反映されない）。
+		select)ピンとして利用するピン（BlinkaではCS0(D3)ピンを使用しないため、GPIOの
+		1つをCSピンとして使用する必要がある）。D4～D7の中から1つを選択する。CSピンと
+		して使用されるピンはGPIOの設定(GPIO_D7_4_IO_select)で出力ピンとする必要がある
+		。また、CSピンとして指定したピンに対する入力ポートからの値の変更は無視される
+		。
+		SPIを使用しない場合はこの設定は無視される。
+		アクティブ状態での変更は無効（反映されない）。
          - Name: SPI_cs_pin SPI_cs_pin
          - DefaultValue: D4
          - Constraint: (D4,D5,D6,D7)
@@ -335,9 +335,9 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         self._SPI_cs_pin = ['D4']
         """
         SPI通信での通信時のCS(chip
-        select)ピンの状態。通信時にLowとする場合は0、Highとする場合には1となる。
-        SPIを使用しない場合はこの設定は無視される。
-        アクティブ状態での変更は無効（反映されない）。
+		select)ピンの状態。通信時にLowとする場合は0、Highとする場合には1となる。
+		SPIを使用しない場合はこの設定は無視される。
+		アクティブ状態での変更は無効（反映されない）。
          - Name: SPI_cs_talking SPI_cs_talking
          - DefaultValue: 0
          - Constraint: (0,1)
@@ -345,9 +345,9 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         self._SPI_cs_talking = [0]
         """
         I2Cデバイスの7ビットアドレス。0bや0xを値の前につけることで2進法や16進法で指定
-        することも可能。
-        I2Cを使用しない場合はこの設定は無視される。
-        アクティブ状態での変更は無効（反映されない）。
+		することも可能。
+		I2Cを使用しない場合はこの設定は無視される。
+		アクティブ状態での変更は無効（反映されない）。
          - Name: I2C_device_address I2C_device_address
          - DefaultValue: 0x08
          - Range: [0x08, 0x77]
@@ -355,8 +355,8 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         self._I2C_device_address = ['0x08']
         """
         I2CもしくはSPI通信を使用するか、使用しないかを選択する。I2CかSPIであればそれ
-        ぞれの通信を使用し、Noneであれば使用しない。
-        アクティブ状態での変更は無効（反映されない）。
+		ぞれの通信を使用し、Noneであれば使用しない。
+		アクティブ状態での変更は無効（反映されない）。
          - Name: SER_select SER_select
          - DefaultValue: None
          - Constraint: (None,I2C,SPI)
@@ -364,19 +364,19 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         self._SER_select = ['None']
         """
         I2CもしくはSPI通信においてバスをロックするときの最大待ち時間。この時間を超え
-        てもバスがロックできない場合はエラーとする。
-        SPIやI2Cを使用しない場合はこの設定は無視される。
+		てもバスがロックできない場合はエラーとする。
+		SPIやI2Cを使用しない場合はこの設定は無視される。
          - Name: SER_timeout SER_timeout
          - DefaultValue: 1000
          - Unit: ms
          - Constraint: x>=0
         """
         self._SER_timeout = [1000]
-        
+		
         # </rtc-template>
 
 
-         
+		 
     ##
     #
     # The initialize action (on CREATED->ALIVE transition)
@@ -395,7 +395,7 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         self.bindParameter("I2C_device_address", self._I2C_device_address, "0x08")
         self.bindParameter("SER_select", self._SER_select, "None")
         self.bindParameter("SER_timeout", self._SER_timeout, "1000")
-        
+		
         # Set InPort buffers
         self.addInPort("C7_0out",self._C7_0outIn)
         self.addInPort("D4out",self._D4outIn)
@@ -403,7 +403,7 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         self.addInPort("D6out",self._D6outIn)
         self.addInPort("D7out",self._D7outIn)
         self.addInPort("I2C_SPIwcommand_rbytes",self._I2C_SPIwcommand_rbytesIn)
-        
+		
         # Set OutPort buffers
         self.addOutPort("C7_0in",self._C7_0inOut)
         self.addOutPort("D4in",self._D4inOut)
@@ -411,13 +411,13 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         self.addOutPort("D6in",self._D6inOut)
         self.addOutPort("D7in",self._D7inOut)
         self.addOutPort("I2C_SPIread",self._I2C_SPIreadOut)
-        
+		
         # Set service provider to Ports
-        
+		
         # Set service consumers to Ports
-        
+		
         # Set CORBA Service Ports
-        
+		
         #GPIO port settings
         self.CIOSelect = 0xff
         self.DIOSelect = 0xf
@@ -449,7 +449,7 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         self.spi_locked = False
 
         return RTC.RTC_OK
-    
+	
     ###
     ## 
     ## The finalize action (on ALIVE->END transition)
@@ -461,7 +461,7 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
     #
 
     #    return RTC.RTC_OK
-    
+	
     ###
     ##
     ## The startup action when ExecutionContext startup
@@ -474,7 +474,7 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
     #def onStartup(self, ec_id):
     #
     #    return RTC.RTC_OK
-    
+	
     ###
     ##
     ## The shutdown action when ExecutionContext stop
@@ -487,10 +487,10 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
     #def onShutdown(self, ec_id):
     #
     #    return RTC.RTC_OK
-    
+	
     ##
     # コンフィギュレーション変数を読み込み、GPIOの各ピンを入力もしくは出力ピンに設
-    # 定する。また、I2CもしくはSPI通信の設定を行う。
+	# 定する。また、I2CもしくはSPI通信の設定を行う。
     #
     # The activated action (Active state entry action)
     #
@@ -522,118 +522,7 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
             return RTC.RTC_ERROR
     
         return RTC.RTC_OK
-    
-    ##
-    # GPIOの全ての出力ピンにLowを出力する。I2CもしくはSPI通信を終了する。
-    #
-    # The deactivated action (Active state exit action)
-    #
-    # @param ec_id target ExecutionContext Id
-    #
-    # @return RTC::ReturnCode_t
-    #
-    #
-    def onDeactivated(self, ec_id):
-        self.finalizeDevice()
-    
-        return RTC.RTC_OK
-    
-    ##
-    # InPortから値を読み込み、GPIOの各出力ピンから値に対応してHighまたはLowを出力す
-    # る。
-    # GPIO各入力ピンからHighまたはLowを読み込みOutPortから対応する値を出力する。
-    # I2CもしくはSPI通信が設定されている場合は、InPortから読み込んだ値に応じてデバ
-    # イスへの書き込みやデバイスからの読み込みを行い、OutPortからの出力を行う。
-    #
-    # The execution action that is invoked periodically
-    #
-    # @param ec_id target ExecutionContext Id
-    #
-    # @return RTC::ReturnCode_t
-    #
-    #
-    def onExecute(self, ec_id):
-        #--- GPIO ------------------------------------------
-        #Output data to PortC
-        if self._C7_0outIn.isNew():
-            self._d_C7_0out = self._C7_0outIn.read()
-            for i, port in enumerate(self.portc):
-                if self.CIOSelect & (1 << i) == 0: #if output port
-                    if self._d_C7_0out.data & (1 << i): #if ith bit is equal to 1
-                        port.value = True
-                        print(f'C{i}->1')
-                    else:
-                        port.value = False
-                        print(f'C{i}->0')
-
-        #Output data to PortD
-        if self._D4outIn.isNew():
-            self._d_D4out = self._D4outIn.read()
-            if self.DIOSelect & (1 << 0) == 0 and self.cs_index != 0: #if output and not cs pin
-                self.portd[0].value = True if self._d_D4out.data else False
-                print(f'D4->{self._d_D4out.data}')
-
-        if self._D5outIn.isNew():
-            self._d_D5out = self._D5outIn.read()
-            if self.DIOSelect & (1 << 1) == 0 and self.cs_index != 1: #if output and not cs pin
-                self.portd[1].value = True if self._d_D5out.data else False
-                print(f'D5->{self._d_D5out.data}')
-
-        if self._D6outIn.isNew():
-            self._d_D6out = self._D6outIn.read()
-            if self.DIOSelect & (1 << 2) == 0 and self.cs_index != 2: #if output and not cs pin
-                self.portd[2].value = True if self._d_D6out.data else False
-                print(f'D6->{self._d_D6out.data}')
-
-        if self._D7outIn.isNew():
-            self._d_D7out = self._D7outIn.read()
-            if self.DIOSelect & (1 << 3) == 0 and self.cs_index != 3: #if output and not cs pin
-                self.portd[3].value = True if self._d_D7out.data else False
-                print(f'D7->{self._d_D7out.data}')
-
-        #Input data from PortC
-        if self.CIOSelect: #at least one port is input
-            self._d_C7_0in.data = 0
-            for i, port in enumerate(self.portc):
-                if port.value:
-                    self._d_C7_0in.data |= (1 << i)
-            self._C7_0inOut.write()
-
-        #Input data from PortD
-        if self.DIOSelect & (1 << 0): # if input
-            self._d_D4in.data = 1 if self.portd[0].value else 0
-            self._D4inOut.write()
-
-        if self.DIOSelect & (1 << 1): # if input
-            self._d_D5in.data = 1 if self.portd[1].value else 0
-            self._D5inOut.write()
-
-        if self.DIOSelect & (1 << 2): # if input
-            self._d_D6in.data = 1 if self.portd[2].value else 0
-            self._D6inOut.write()
-
-        if self.DIOSelect & (1 << 3): # if input
-            self._d_D7in.data = 1 if self.portd[3].value else 0
-            self._D7inOut.write()
-        #--- end GPIO --------------------------------------
-
-        #--- Serial ----------------------------------------
-        #--- Serial from InPort ----------------------------
-        if self._I2C_SPIwcommand_rbytesIn.isNew():
-            self._d_I2C_SPIwcommand_rbytes = self._I2C_SPIwcommand_rbytesIn.read()
-            if len(self._d_I2C_SPIwcommand_rbytes.data) > 0 : #not empty
-                readbytes = self._d_I2C_SPIwcommand_rbytes.data[-1]
-                msg = bytes(self._d_I2C_SPIwcommand_rbytes.data[:-1])
-
-                res = self.serialCommunication(msg, readbytes)
-                if readbytes != 0:
-                    self._d_I2C_SPIread.data = bytes(res)
-                    print(f'Serial data = {self._d_I2C_SPIread.data}')
-                    self._I2C_SPIreadOut.write()
-        #--- end Serial ------------------------------------
-        
-        return RTC.RTC_OK
-    
+	
     ###
     ##
     ## Set GPIO port direction depending on the configuration values.
@@ -773,54 +662,21 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
 
         return 0
 
-    ###
     ##
-    ## Communicate with the device depending on the arguments.
-    ## Send only if msg is not empty and readbytes = 0
-    ## Receive only if msg is empty and readbytes > 0
-    ## Send and receive if msg is not empty and readbytes > 0
-    ## Neither send nor receive otherwise 
-    ##
-    ## @param msg message sent to the device
-    ## @param readbytes number of bytes of the message recieved from the device
-    ##
-    ## @return bytearray of the received message. if readbytes<=0 then empty bytearray is returned
-    ##
-    ##
-    def serialCommunication(self, msg, readbytes):
-        if readbytes < 0:
-            return bytearray(0)
-
-        result = bytearray(readbytes)
-        if len(msg) == 0: #read only
-            if readbytes > 0:
-                if self.i2c_locked:
-                    self.i2c.readfrom_into(self.I2C_address, result) #the read date is stored in result
-                elif self.spi_locked:
-                    self.spi.configure(baudrate=self.SPI_rate, polarity=self.SPI_polarity, phase=self.SPI_phase) 
-                    self.portd[self.cs_index].value = not self.portd[self.cs_index].value #set flag for listening
-                    self.spi.readinto(result) #the read date is stored in result
-                    self.portd[self.cs_index].value = not self.cs.value #clear flag to wait
-        else:
-            if readbytes == 0: #write only
-                if self.i2c_locked:
-                    self.i2c.writeto(self.I2C_address, msg)
-                elif self.spi_locked:
-                    self.spi.configure(baudrate=self.SPI_rate, polarity=self._SPI_polarity, phase=self.SPI_phase) 
-                    self.portd[self.cs_index].value = not self.portd[self.cs_index].value #set flag for listening
-                    self.spi.write(msg)
-                    self.portd[self.cs_index].value = not self.cs.value #clear flag to wait
-            else: #write and read
-                if self.i2c_locked:
-                    self.i2c.writeto_then_readfrom(self.I2C_address, msg, result)
-                elif self.spi_locked:
-                    self.spi.configure(baudrate=self.SPI_rate, polarity=self._SPI_polarity, phase=self.SPI_phase) 
-                    self.portd[self.cs_index].value = not self.portd[self.cs_index].value #set flag for listening
-                    write_readinto(msg, result)
-                    self.portd[self.cs_index].value = not self.cs.value #clear flag to wait
-
-        return result
-
+    # GPIOの全ての出力ピンにLowを出力する。I2CもしくはSPI通信を終了する。
+    #
+    # The deactivated action (Active state exit action)
+    #
+    # @param ec_id target ExecutionContext Id
+    #
+    # @return RTC::ReturnCode_t
+    #
+    #
+    def onDeactivated(self, ec_id):
+        self.finalizeDevice()
+    
+        return RTC.RTC_OK
+	
     ###
     ##
     ## Finalize the device.
@@ -862,6 +718,150 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         return
 
     ##
+    # InPortから値を読み込み、GPIOの各出力ピンから値に対応してHighまたはLowを出力す
+	# る。
+	# GPIOの各入力ピンからHighまたはLowを読み込みOutPortから対応する値を出力する。
+	# I2CもしくはSPI通信が設定されている場合は、InPortから読み込んだ値に応じてデバ
+	# イスへの書き込みやデバイスからの読み込みを行い、OutPortからの出力を行う。
+    #
+    # The execution action that is invoked periodically
+    #
+    # @param ec_id target ExecutionContext Id
+    #
+    # @return RTC::ReturnCode_t
+    #
+    #
+    def onExecute(self, ec_id):
+        #--- GPIO ------------------------------------------
+        #Output data to PortC
+        if self._C7_0outIn.isNew():
+            self._d_C7_0out = self._C7_0outIn.read()
+            for i, port in enumerate(self.portc):
+                if self.CIOSelect & (1 << i) == 0: #if output port
+                    if self._d_C7_0out.data & (1 << i): #if ith bit is equal to 1
+                        port.value = True
+                        print(f'C{i}->1')
+                    else:
+                        port.value = False
+                        print(f'C{i}->0')
+
+        #Output data to PortD
+        if self._D4outIn.isNew():
+            self._d_D4out = self._D4outIn.read()
+            if self.DIOSelect & (1 << 0) == 0 and self.cs_index != 0: #if output and not cs pin
+                self.portd[0].value = True if self._d_D4out.data else False
+                print(f'D4->{self._d_D4out.data}')
+
+        if self._D5outIn.isNew():
+            self._d_D5out = self._D5outIn.read()
+            if self.DIOSelect & (1 << 1) == 0 and self.cs_index != 1: #if output and not cs pin
+                self.portd[1].value = True if self._d_D5out.data else False
+                print(f'D5->{self._d_D5out.data}')
+
+        if self._D6outIn.isNew():
+            self._d_D6out = self._D6outIn.read()
+            if self.DIOSelect & (1 << 2) == 0 and self.cs_index != 2: #if output and not cs pin
+                self.portd[2].value = True if self._d_D6out.data else False
+                print(f'D6->{self._d_D6out.data}')
+
+        if self._D7outIn.isNew():
+            self._d_D7out = self._D7outIn.read()
+            if self.DIOSelect & (1 << 3) == 0 and self.cs_index != 3: #if output and not cs pin
+                self.portd[3].value = True if self._d_D7out.data else False
+                print(f'D7->{self._d_D7out.data}')
+
+        #Input data from PortC
+        if self.CIOSelect: #at least one port is input
+            self._d_C7_0in.data = 0
+            for i, port in enumerate(self.portc):
+                if port.value:
+                    self._d_C7_0in.data |= (1 << i)
+            self._C7_0inOut.write()
+
+        #Input data from PortD
+        if self.DIOSelect & (1 << 0): # if input
+            self._d_D4in.data = 1 if self.portd[0].value else 0
+            self._D4inOut.write()
+
+        if self.DIOSelect & (1 << 1): # if input
+            self._d_D5in.data = 1 if self.portd[1].value else 0
+            self._D5inOut.write()
+
+        if self.DIOSelect & (1 << 2): # if input
+            self._d_D6in.data = 1 if self.portd[2].value else 0
+            self._D6inOut.write()
+
+        if self.DIOSelect & (1 << 3): # if input
+            self._d_D7in.data = 1 if self.portd[3].value else 0
+            self._D7inOut.write()
+        #--- end GPIO --------------------------------------
+
+        #--- Serial ----------------------------------------
+        #--- Serial from InPort ----------------------------
+        if self._I2C_SPIwcommand_rbytesIn.isNew():
+            self._d_I2C_SPIwcommand_rbytes = self._I2C_SPIwcommand_rbytesIn.read()
+            if len(self._d_I2C_SPIwcommand_rbytes.data) > 0 : #not empty
+                readbytes = self._d_I2C_SPIwcommand_rbytes.data[-1]
+                msg = bytes(self._d_I2C_SPIwcommand_rbytes.data[:-1])
+
+                res = self.serialCommunication(msg, readbytes)
+                if len(res) > 0:
+                    self._d_I2C_SPIread.data = bytes(res)
+                    print(f'Serial data = {self._d_I2C_SPIread.data}')
+                    self._I2C_SPIreadOut.write()
+        #--- end Serial ------------------------------------
+        
+        return RTC.RTC_OK
+	
+    ###
+    ##
+    ## Communicate with the device depending on the arguments.
+    ## Send only if msg is not empty and readbytes = 0
+    ## Receive only if msg is empty and readbytes > 0
+    ## Send and receive if msg is not empty and readbytes > 0
+    ## Neither send nor receive otherwise 
+    ##
+    ## @param msg message sent to the device
+    ## @param readbytes number of bytes of the message recieved from the device
+    ##
+    ## @return bytearray of the received message. if readbytes<=0 then empty bytearray is returned
+    ##
+    ##
+    def serialCommunication(self, msg, readbytes):
+        if (readbytes < 0) or ((not self.i2c_locked) and (not self.spi_locked)):
+            return bytearray()
+
+        result = bytearray(readbytes)
+        if len(msg) > 0: 
+            if readbytes == 0: #write only
+                if self.i2c_locked:
+                    self.i2c.writeto(self.I2C_address, msg)
+                else: # self.spi_locked
+                    self.spi.configure(baudrate=self.SPI_rate, polarity=self._SPI_polarity, phase=self.SPI_phase) 
+                    self.portd[self.cs_index].value = not self.portd[self.cs_index].value #set flag for listening
+                    self.spi.write(msg)
+                    self.portd[self.cs_index].value = not self.cs.value #clear flag to wait
+            else: #write and read
+                if self.i2c_locked:
+                    self.i2c.writeto_then_readfrom(self.I2C_address, msg, result)
+                else: # self.spi_locked
+                    self.spi.configure(baudrate=self.SPI_rate, polarity=self._SPI_polarity, phase=self.SPI_phase) 
+                    self.portd[self.cs_index].value = not self.portd[self.cs_index].value #set flag for listening
+                    write_readinto(msg, result)
+                    self.portd[self.cs_index].value = not self.cs.value #clear flag to wait
+        else: #read only
+            if readbytes > 0:
+                if self.i2c_locked:
+                    self.i2c.readfrom_into(self.I2C_address, result) #the read data is stored in result
+                else: # self.spi_locked
+                    self.spi.configure(baudrate=self.SPI_rate, polarity=self.SPI_polarity, phase=self.SPI_phase) 
+                    self.portd[self.cs_index].value = not self.portd[self.cs_index].value #set flag for listening
+                    self.spi.readinto(result) #the read data is stored in result
+                    self.portd[self.cs_index].value = not self.cs.value #clear flag to wait
+
+        return result
+
+    ##
     # GPIOの全ての出力ピンにLowを出力する。I2CもしくはSPI通信を終了する。
     #
     # The aborting action when main logic error occurred.
@@ -875,7 +875,7 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
         self.finalizeDevice()
     
         return RTC.RTC_OK
-    
+	
     ###
     ##
     ## The error action in ERROR state
@@ -888,7 +888,7 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
     #def onError(self, ec_id):
     #
     #    return RTC.RTC_OK
-    
+	
     ###
     ##
     ## The reset action that is invoked resetting
@@ -901,7 +901,7 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
     #def onReset(self, ec_id):
     #
     #    return RTC.RTC_OK
-    
+	
     ###
     ##
     ## The state update action that is invoked after onExecute() action
@@ -915,7 +915,7 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
     #def onStateUpdate(self, ec_id):
     #
     #    return RTC.RTC_OK
-    
+	
     ###
     ##
     ## The action that is invoked when execution context's rate is changed
@@ -928,6 +928,8 @@ class Adafruit_FT232H_Breakout(OpenRTM_aist.DataFlowComponentBase):
     #def onRateChanged(self, ec_id):
     #
     #    return RTC.RTC_OK
+	
+
 
 
 def Adafruit_FT232H_BreakoutInit(manager):

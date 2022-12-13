@@ -1,7 +1,7 @@
 # USBtoGPIO_SerialCommunication-RTCs
 Adafruit FT232H BreakoutおよびAdafruit MCP2221A Breakoutを使用したUSB-GPIO, SPI, I<sup>2</sup>C, UART変換コンポーネントとその利用例を提供するOpenRTM-aist用コンポーネント群です。
 
-A USB to GPIO, SPI, I<sup>2</sup>C, UART components and sample components for OpenRTM-aist using an Adafruit FT232H breakout and Adafruit MCP2221A breakout boards  
+USB to GPIO, SPI, I<sup>2</sup>C, UART components and sample components for OpenRTM-aist using Adafruit FT232H breakout / Adafruit MCP2221A breakout boards 
 
 # 概要
 ## 開発の背景
